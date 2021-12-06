@@ -149,7 +149,8 @@ DECLARE
 	new_teacher_id	integer;
 BEGIN
 	INSERT INTO teachers (type_id, teacher_name, address, phone)
-	VALUES (_type_id, _teacher_name, _address, _phone);
+	VALUES (_type_id, _teacher_name, _address, _phone)
+	RETURNING teacher_id INTO new_teacher_id;
 
 	INSERT INTO users (teacher_id, pass_hash)
 	VALUES (new_teacher_id, crypt(_pass, gen_salt('bf', 8)));
@@ -239,7 +240,7 @@ $$ LANGUAGE 'plpgsql';
 
 CREATE FUNCTION add_student (
 	_group_id		integer,
-	_stundent_name	varchar(128),
+	_student_name	varchar(128),
 	_phone			varchar(32),
 	_pass			varchar(128)	
 )
@@ -249,7 +250,7 @@ DECLARE
 	new_student_id	integer;
 BEGIN
 	INSERT INTO students (group_id, student_name, phone)
-	VALUES (_group_id, _student_id, _phone)
+	VALUES (_group_id, _student_name, _phone)
 	RETURNING student_id INTO new_student_id;
 
 	INSERT INTO users (student_id, pass_hash)
@@ -397,10 +398,10 @@ CREATE FUNCTION add_stage (
 	_date_ended		date 
 
 )
-RETURNS void
+RETURNS void 
 AS $$
 BEGIN
-	INSERT INTO stages (_stage_name_id, theme_id, teacher_id, percentage, date_started, date_ended)
+	INSERT INTO stages (stage_name_id, theme_id, teacher_id, percentage, date_started, date_ended)
 	VALUES (_stage_name_id, _theme_id, _teacher_id, _percentage, _date_started, _date_ended);
 END;
 $$ LANGUAGE 'plpgsql';
@@ -420,7 +421,7 @@ BEGIN
 	UPDATE stages 
 	SET
 		stage_name_id = _stage_name_id, theme_id = _theme_id,
-		teacher_id = _teacher_id, _percentage = _percentage, 
+		teacher_id = _teacher_id, percentage = _percentage, 
 		date_started = _date_started, date_ended = _date_ended
 	WHERE stage_id = _stage_id;
 END;
@@ -450,6 +451,7 @@ $$ LANGUAGE 'plpgsql';
 
 CREATE FUNCTION get_teachers ()
 RETURNS TABLE (
+	teacher_id		integer,
 	type_id			integer,
 	type_name		varchar,
 	teacher_name	varchar,
@@ -460,8 +462,8 @@ AS $$
 BEGIN
 	RETURN QUERY
 	SELECT 
-		teachers.type_id, teacher_types.type_name, teachers.teacher_name,
-		teachers.address, teachers.phone
+		teachers.teacher_id, teachers.type_id, teacher_types.type_name,
+		teachers.teacher_name, teachers.address, teachers.phone
 	FROM teachers
 	JOIN teacher_types USING (type_id);
 END;
@@ -534,7 +536,7 @@ BEGIN
 	RETURN QUERY
 	SELECT 
 		themes.theme_id, themes.student_id, students.student_name, themes.theme_name, 
-		themes.main_teacher_id, themes.econ_teacher_id, themes.econ_teacher_id
+		themes.main_teacher_id, themes.econ_teacher_id, themes.safe_teacher_id
 	FROM themes 
 	JOIN students USING (student_id);
 END;
@@ -582,7 +584,7 @@ CREATE FUNCTION check_password (_user_id integer, _pass varchar(128))
 RETURNS integer
 AS $$
 DECLARE
-	_pass_hash integer;
+	_pass_hash varchar(60);
 BEGIN
 	-- CODES:
 	-- 0 - success
