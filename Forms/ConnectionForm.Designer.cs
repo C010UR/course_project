@@ -55,7 +55,7 @@
             this.cancelButton.Location = new System.Drawing.Point(36, 483);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(216, 30);
-            this.cancelButton.TabIndex = 14;
+            this.cancelButton.TabIndex = 17;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -70,7 +70,7 @@
             this.connectButton.Location = new System.Drawing.Point(37, 447);
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(216, 30);
-            this.connectButton.TabIndex = 13;
+            this.connectButton.TabIndex = 16;
             this.connectButton.Text = "Подключиться";
             this.connectButton.UseVisualStyleBackColor = false;
             this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
@@ -82,7 +82,7 @@
             this.showPassCheck.Location = new System.Drawing.Point(110, 310);
             this.showPassCheck.Name = "showPassCheck";
             this.showPassCheck.Size = new System.Drawing.Size(144, 22);
-            this.showPassCheck.TabIndex = 12;
+            this.showPassCheck.TabIndex = 14;
             this.showPassCheck.Text = "&показать пароль";
             this.showPassCheck.UseVisualStyleBackColor = false;
             this.showPassCheck.CheckedChanged += new System.EventHandler(this.showPassCheck_CheckedChanged);
@@ -94,7 +94,7 @@
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '*';
             this.passwordBox.Size = new System.Drawing.Size(216, 30);
-            this.passwordBox.TabIndex = 11;
+            this.passwordBox.TabIndex = 13;
             // 
             // passwordLabel
             // 
@@ -131,7 +131,7 @@
             this.usernameBox.Location = new System.Drawing.Point(37, 220);
             this.usernameBox.Name = "usernameBox";
             this.usernameBox.Size = new System.Drawing.Size(216, 30);
-            this.usernameBox.TabIndex = 15;
+            this.usernameBox.TabIndex = 12;
             // 
             // hostLabel
             // 
@@ -165,7 +165,7 @@
             this.hostBox.Location = new System.Drawing.Point(37, 112);
             this.hostBox.Name = "hostBox";
             this.hostBox.Size = new System.Drawing.Size(216, 30);
-            this.hostBox.TabIndex = 15;
+            this.hostBox.TabIndex = 10;
             // 
             // databaseLabel
             // 
