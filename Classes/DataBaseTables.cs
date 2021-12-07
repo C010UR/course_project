@@ -110,21 +110,24 @@ namespace CourseProject.Classes
     public class User
     {
         public int user_id { get; set; }
-        public int teacher_id { get; set; }
-        public int student_id { get; set; }
+        public bool is_teacher { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
 
-        public User(int user_id, int teacher_id, int student_id)
+        public User(int user_id, bool is_teacher, int id, string name)
         {
             this.user_id = user_id;
-            this.teacher_id = teacher_id;
-            this.student_id = student_id;
+            this.is_teacher = is_teacher;
+            this.id = id;
+            this.name = name;
         }
 
         public User ()
         {
             this.user_id = 0;
-            this.teacher_id = 0;
-            this.student_id = 0;
+            this.is_teacher = false;
+            this.id = 0;
+            this.name = "";
         }
     }
 

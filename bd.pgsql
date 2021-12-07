@@ -509,15 +509,22 @@ $$ LANGUAGE 'plpgsql';
 
 CREATE FUNCTION get_users ()
 RETURNS TABLE (
-	user_id		integer,
-	teacher_id	integer,
-	student_id	integer
+	user_id			integer,
+	teacher_id		integer,
+	teacher_name	varchar,
+	student_id		integer,
+	student_name	varchar
 )
 AS $$
 BEGIN
 	RETURN QUERY 
-	SELECT users.user_id, COALESCE(users.teacher_id, -1), COALESCE(users.student_id, -1)
-	FROM users;
+	SELECT 
+		users.user_id, users.teacher_id IS NOT NULL AS is_teacher, 
+		COALESCE(users.teacher_id, users.student_id) AS id, 
+		COALESCE(teachers.teacher_name, students.student_name) AS name
+	FROM users
+	LEFT JOIN teachers USING (teacher_id)
+	LEFT JOIN students USING (student_id);
 END;
 $$ LANGUAGE 'plpgsql';
 

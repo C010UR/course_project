@@ -170,7 +170,7 @@ namespace CourseProject.Classes
                         {
                             while (reader.Read())
                             {
-                                buf.Add(new User(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2)));
+                                buf.Add(new User(reader.GetInt32(0), reader.GetBoolean(1), reader.GetInt32(2), reader.GetString(3)));
                             }
                         }
                     }
@@ -187,7 +187,7 @@ namespace CourseProject.Classes
             return buf;
         }
 
-        public static List<Theme> Themes()
+        public static List<Theme> Themes(string custom_query_parameters)
         {
             List<Theme> buf = new List<Theme>();
             using (NpgsqlConnection conn = new NpgsqlConnection(Settings.conStr.ConnectionString))
@@ -195,7 +195,7 @@ namespace CourseProject.Classes
                 try
                 {
                     conn.Open();
-                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_themes();", conn))
+                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_themes() " + custom_query_parameters, conn))
                     {
                         command.Parameters.Clear();
                         command.Prepare();
@@ -294,6 +294,34 @@ namespace CourseProject.Classes
                 }
             }
             return buf;
+        }
+
+        public static bool PasswordIsValid(int id, string pass)
+        {
+            using (NpgsqlConnection conn = new NpgsqlConnection(Settings.conStr.ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM check_password(:_id, :_pass);", conn))
+                    {
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("_id", id);
+                        command.Parameters.AddWithValue("_pass", pass);
+                        command.Prepare();
+                        return (int)command.ExecuteScalar() == 0;
+                    }
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return false;
         }
     }
 }
