@@ -96,6 +96,7 @@
     <Compile Include="Classes\DataBaseGet.cs" />
     <Compile Include="Classes\DataBaseTables.cs" />
     <Compile Include="Classes\DataBaseUpdate.cs" />
+    <Compile Include="Classes\Settings.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

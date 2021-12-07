@@ -516,7 +516,7 @@ RETURNS TABLE (
 AS $$
 BEGIN
 	RETURN QUERY 
-	SELECT users.user_id, users.teacher_id, users.student_id
+	SELECT users.user_id, COALESCE(users.teacher_id, -1), COALESCE(users.student_id, -1)
 	FROM users;
 END;
 $$ LANGUAGE 'plpgsql';

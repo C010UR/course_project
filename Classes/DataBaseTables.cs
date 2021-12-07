@@ -113,19 +113,11 @@ namespace CourseProject.Classes
         public int teacher_id { get; set; }
         public int student_id { get; set; }
 
-        public User(int user_id, bool isTeacher, int id)
+        public User(int user_id, int teacher_id, int student_id)
         {
             this.user_id = user_id;
-            if (isTeacher)
-            {
-                this.teacher_id = id;
-                this.student_id = -1;
-            }
-            else
-            {
-                this.student_id = id;
-                this.teacher_id = -1;
-            }
+            this.teacher_id = teacher_id;
+            this.student_id = student_id;
         }
 
         public User ()
@@ -197,9 +189,11 @@ namespace CourseProject.Classes
         public DateTime date_started { get; set;}
         public DateTime date_ended { get; set;}
 
-        public Stage (int stage_id, int theme_id, int teacher_id, string teacher_name, int percentage, DateTime date_started, DateTime date_ended)
+        public Stage (int stage_id, int stage_name_id, string stage_name, int theme_id, int teacher_id, string teacher_name, int percentage, DateTime date_started, DateTime date_ended)
         {
             this.stage_id = stage_id;
+            this.stage_name_id = stage_name_id;
+            this.stage_name = stage_name;
             this.theme_id = theme_id;
             this.teacher_id = teacher_id;
             this.teacher_name = teacher_name;
