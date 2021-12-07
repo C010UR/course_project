@@ -21,6 +21,7 @@ namespace CourseProject.Classes
                     using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_teacher_types();", conn))
                     {
                         command.Parameters.Clear();
+                        command.Prepare();
                         using (NpgsqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -55,6 +56,7 @@ namespace CourseProject.Classes
                     using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_teachers();", conn))
                     {
                         command.Parameters.Clear();
+                        command.Prepare();
                         using (NpgsqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -90,6 +92,7 @@ namespace CourseProject.Classes
                     using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_groups();", conn))
                     {
                         command.Parameters.Clear();
+                        command.Prepare();
                         using (NpgsqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -125,6 +128,7 @@ namespace CourseProject.Classes
                     using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_students();", conn))
                     {
                         command.Parameters.Clear();
+                        command.Prepare();
                         using (NpgsqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -161,6 +165,7 @@ namespace CourseProject.Classes
                     using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_users();", conn))
                     {
                         command.Parameters.Clear();
+                        command.Prepare();
                         using (NpgsqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -193,6 +198,7 @@ namespace CourseProject.Classes
                     using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_themes();", conn))
                     {
                         command.Parameters.Clear();
+                        command.Prepare();
                         using (NpgsqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -229,6 +235,7 @@ namespace CourseProject.Classes
                     using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_stage_names();", conn))
                     {
                         command.Parameters.Clear();
+                        command.Prepare();
                         using (NpgsqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -263,6 +270,7 @@ namespace CourseProject.Classes
                     using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_stages();", conn))
                     {
                         command.Parameters.Clear();
+                        command.Prepare();
                         using (NpgsqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
