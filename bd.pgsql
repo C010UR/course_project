@@ -510,10 +510,9 @@ $$ LANGUAGE 'plpgsql';
 CREATE FUNCTION get_users ()
 RETURNS TABLE (
 	user_id			integer,
-	teacher_id		integer,
-	teacher_name	varchar,
-	student_id		integer,
-	student_name	varchar
+	is_teacher		boolean,
+	id				integer,
+	name			varchar
 )
 AS $$
 BEGIN
