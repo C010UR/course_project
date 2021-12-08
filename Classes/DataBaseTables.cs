@@ -82,14 +82,18 @@ namespace CourseProject.Classes
         public string group_name { get; set; }
         public string student_name { get; set; }
         public string phone { get; set; }
+        public string theme_name { get; set; }
+        public int percentage { get; set; }
 
-        public Student (int student_id, int group_id, string group_name, string student_name, string phone)
+        public Student (int student_id, int group_id, string group_name, string student_name, string phone, string theme_name, int percentage)
         {
             this.student_id = student_id;
             this.group_id = group_id;
             this.group_name = group_name;
             this.student_name = student_name;
             this.phone = phone;
+            this.theme_name = theme_name;
+            this.percentage = percentage;
         }
         
         public Student ()
@@ -99,6 +103,8 @@ namespace CourseProject.Classes
             this.group_name = "";
             this.student_name = "";
             this.phone = "";
+            this.theme_name = "";
+            this.percentage = 0;
         }
     }
 

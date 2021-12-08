@@ -33,11 +33,21 @@ namespace CourseProject
         private void teacherGroupsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             setActive(sender);
+
+            // Show TeacherGroupsControl and hide others
+            hideAllControls();
+            teacherGroupsControl.Show();
+            teacherGroupsControl.ItemsLoad();
         }
 
         private void studentProjectsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             setActive(sender);
+
+            // Show StudentProjectControl and hide others
+            hideAllControls();
+            studentProjectControl.Show();
+            studentProjectControl.ItemsLoad();
         }
 
         private void setActive(object sender)
@@ -50,6 +60,7 @@ namespace CourseProject
         public void hideAllControls()
         {
             studentProjectControl.Hide();
+            teacherGroupsControl.Hide();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -92,6 +103,11 @@ namespace CourseProject
 
                 // Show TeacherGroupsControl and hide others
                 hideAllControls();
+                teacherGroupsControl.Show();
+                teacherGroupsControl.ItemsLoad();
+
+                // Activate menu strip button
+                setActive(menuStrip.Items[0]);
             }
             else
             {

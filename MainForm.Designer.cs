@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.studentProjectControl = new CourseProject.Forms.StudentProjectControl();
+            this.teacherGroupsControl = new CourseProject.Forms.TeacherGroupsControl();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -45,6 +46,7 @@
             // 
             // studentProjectControl
             // 
+            this.studentProjectControl.BackColor = System.Drawing.Color.GhostWhite;
             this.studentProjectControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.studentProjectControl.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.studentProjectControl.Location = new System.Drawing.Point(0, 24);
@@ -53,12 +55,24 @@
             this.studentProjectControl.Size = new System.Drawing.Size(1264, 657);
             this.studentProjectControl.TabIndex = 1;
             // 
+            // teacherGroupsControl
+            // 
+            this.teacherGroupsControl.BackColor = System.Drawing.Color.GhostWhite;
+            this.teacherGroupsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.teacherGroupsControl.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.teacherGroupsControl.Location = new System.Drawing.Point(0, 24);
+            this.teacherGroupsControl.Margin = new System.Windows.Forms.Padding(5);
+            this.teacherGroupsControl.Name = "teacherGroupsControl";
+            this.teacherGroupsControl.Size = new System.Drawing.Size(1264, 657);
+            this.teacherGroupsControl.TabIndex = 2;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.GhostWhite;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.teacherGroupsControl);
             this.Controls.Add(this.studentProjectControl);
             this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -78,6 +92,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip;
         private Forms.StudentProjectControl studentProjectControl;
+        private Forms.TeacherGroupsControl teacherGroupsControl;
     }
 }
 

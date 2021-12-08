@@ -529,16 +529,24 @@ RETURNS TABLE (
 	group_id		integer,
 	group_name		varchar,
 	student_name	varchar,
-	phone			varchar
+	phone			varchar,
+	theme_name		varchar,
+	percentage		integer
 )
 AS $$
 BEGIN
 	RETURN QUERY
 	SELECT 
 		students.student_id, students.group_id, _groups.group_name,
-		students.student_name, students.phone
+		students.student_name, students.phone, COALESCE(themes.theme_name, 'Отсутствует') AS theme_name,
+		COALESCE((
+			SELECT AVG(CASE WHEN stages.percentage > 100 THEN 100 ELSE stages.percentage END)::int AS percentage
+		 	FROM stages
+		 	WHERE theme_id = themes.theme_id
+		), 0)
 	FROM students
-	JOIN _groups USING (group_id);
+	JOIN _groups USING (group_id)
+	LEFT JOIN themes USING (student_id);
 END;
 $$ LANGUAGE 'plpgsql';
 

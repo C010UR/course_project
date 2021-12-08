@@ -48,13 +48,13 @@ namespace CourseProject.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.stagesList.BackColor = System.Drawing.Color.GhostWhite;
-            this.stagesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.stagesList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stagesList.FormattingEnabled = true;
             this.stagesList.ItemHeight = 22;
             this.stagesList.Location = new System.Drawing.Point(30, 97);
             this.stagesList.Margin = new System.Windows.Forms.Padding(5);
             this.stagesList.Name = "stagesList";
-            this.stagesList.Size = new System.Drawing.Size(1220, 308);
+            this.stagesList.Size = new System.Drawing.Size(1220, 266);
             this.stagesList.TabIndex = 1;
             this.stagesList.SelectedIndexChanged += new System.EventHandler(this.stagesList_SelectedIndexChanged);
             // 

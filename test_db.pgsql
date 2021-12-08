@@ -11,6 +11,7 @@ SELECT * FROM get_teacher_types();
 SELECT add_teacher (1, 'Байков Ипатий Ярославович', '171623, г. Воскресенское, ул. Марата, дом 40, квартира 499', '+7 (978) 781-01-63', '123');
 SELECT add_teacher (2, 'Волкова Ульяна Кирилловна', '391492, г. Прибрежное, ул. Сельский пер, дом 117, квартира 891', '+7 (984) 539-62-71', '123');
 SELECT add_teacher (3, 'Поднебесный Кузьма Вячеславович', '393424, г. Бокситогорск, ул. Автозаводский 1-й проезд, дом 149, квартира 494', '+7 (977) 040-16-12', '123');
+SELECT add_teacher (3, 'Дидиченко Павел Григорьевич', '627320, г. Глазуновка, ул. Старомонетный пер, дом 170, квартира 557', '+7 (970) 654-33-80', '123');
 SELECT add_teacher (1, 'teacher 4', 'address 4', 'phone 4', '123');
 
 SELECT update_teacher ((SELECT MAX(teachers.teacher_id) FROM teachers), 2, 'teacher 5', 'address 5', 'phone 5', '12345');
@@ -22,8 +23,9 @@ SELECT * FROM get_teachers();
 ------------------------------------------------
 
 SELECT add_group (1, 'СП-405', 2018);
-SELECT add_group (2, 'СП-305', 2019);
+SELECT add_group (1, 'СП-305', 2019);
 SELECT add_group (3, 'ПО-309', 2020);
+SELECT add_group (3, 'ПО-409', 2019);
 SELECT add_group (1, 'ПО-209', 2021);
 
 SELECT update_group ((SELECT MAX(_groups.group_id) FROM _groups), 2, 'group 10', 2000);
@@ -37,6 +39,10 @@ SELECT * FROM get_groups();
 SELECT add_student (1, 'Стручкова Наталия Олеговна', '+7 (963) 475-94-41', '123');
 SELECT add_student (2, 'Громова Розалия Владиславовна', '+7 (956) 881-87-34', '123');
 SELECT add_student (3, 'Головин Бруно Ильич', '+7 (997) 315-01-83', '123');
+SELECT add_student (1, 'Князева Майя Михайловна', '+7 (920) 367-08-39', '123');
+SELECT add_student (1, 'Новицкий Михей Станиславович', '+7 (944) 695-84-70', '123');
+SELECT add_student (1, 'Шпагин Карп Егорович', '+7 (920) 721-67-63', '123');
+SELECT add_student (1, 'Сафаров Георгий Закирович', '+7 (984) 268-57-39', '123');
 SELECT add_student (1, 'student 4', 'phone 4', '123');
 
 SELECT update_student ((SELECT MAX(students.student_id) FROM students), 2, 'student 5', 'phone 5', '12345');
@@ -74,7 +80,7 @@ SELECT add_stage (1, 1, 1, 75, '2021-04-04', '2021-04-04');
 
 SELECT update_stage ((SELECT MAX(stages.stage_id) FROM stages), 3, 3, 3, 100, '2020-05-05', '2020-05-05');
 
-SELECT update_stage_percentage_only (1, 30);
+SELECT update_stage_only_percentage (1, 30);
 
 SELECT delete_stage ((SELECT MAX(stages.stage_id) FROM stages));
 
