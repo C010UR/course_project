@@ -78,7 +78,7 @@ ALTER TABLE themes
 
 CREATE TABLE stage_names (
 	stage_name_id   integer GENERATED ALWAYS AS IDENTITY NOT NULL,
-	stage_name      varchar(128) NOT NULL
+	stage_name      text NOT NULL
 );
 
 ALTER TABLE stage_names
@@ -305,6 +305,9 @@ CREATE FUNCTION add_theme (
 )
 RETURNS integer 
 AS $$
+DECLARE 
+	new_theme_id		integer;
+	_stage_names		record;
 BEGIN
 	-- CODES: 
 	-- 	0 - success
@@ -315,7 +318,15 @@ BEGIN
 	END IF;
 
 	INSERT INTO themes (student_id, theme_name, main_teacher_id, econ_teacher_id, safe_teacher_id)
-	VALUES (_student_id, _theme_name, _main_teacher_id, _econ_teacher_id, _safe_teacher_id);
+	VALUES (_student_id, _theme_name, _main_teacher_id, _econ_teacher_id, _safe_teacher_id)
+	RETURNING theme_id INTO new_theme_id;
+
+	FOR _stage_names IN 
+		SELECT stage_names.stage_name_id
+		FROM stage_names
+	LOOP
+		EXECUTE add_stage(_stage_names.stage_name_id, new_theme_id, 1, 0, CURRENT_DATE, CURRENT_DATE);
+	END LOOP;
 
 	RETURN 0;
 END;
@@ -355,13 +366,23 @@ $$ LANGUAGE 'plpgsql';
 CREATE FUNCTION delete_theme (_theme_id integer)
 RETURNS void
 AS $$
+DECLARE
+	_stages			record;
 BEGIN
+	FOR _stages IN 
+		SELECT stages.stage_id
+		FROM stages
+		WHERE stages.theme_id = _theme_id
+	LOOP
+		EXECUTE delete_stage(_stages.stage_id);
+	END LOOP;
+
 	DELETE FROM themes
 	WHERE theme_id = _theme_id;
 END;
 $$ LANGUAGE 'plpgsql';
 
-CREATE FUNCTION add_stage_name(_stage_name varchar(128))
+CREATE FUNCTION add_stage_name(_stage_name text)
 RETURNS void 
 AS $$
 BEGIN 
@@ -370,7 +391,7 @@ BEGIN
 END;
 $$ LANGUAGE 'plpgsql';
 
-CREATE FUNCTION update_stage_name (_stage_name_id integer, _stage_name varchar(128))
+CREATE FUNCTION update_stage_name (_stage_name_id integer, _stage_name text)
 RETURNS void
 AS $$
 BEGIN
@@ -551,7 +572,7 @@ $$ LANGUAGE 'plpgsql';
 CREATE FUNCTION get_stage_names ()
 RETURNS TABLE (
 	stage_name_id		integer,
-	stage_name			varchar
+	stage_name			text
 )
 AS $$
 BEGIN
@@ -565,7 +586,7 @@ CREATE FUNCTION get_stages ()
 RETURNS TABLE (
 	stage_id			integer,
 	stage_name_id		integer,
-	stage_name			varchar,
+	stage_name			text,
 	theme_id			integer,
 	teacher_id			integer,
 	teacher_name		varchar,
@@ -605,3 +626,16 @@ BEGIN
 	END IF;
 END;
 $$ LANGUAGE 'plpgsql';
+
+SELECT add_teacher_type('Преподаватель по основному отделу');
+SELECT add_teacher_type('Преподаватель по экономическому отделу');
+SELECT add_teacher_type('Преподаватель по отделу охраны труда');
+
+SELECT add_stage_name('Разработка постановки задачи, организационно-экономическая сущность программы, определение входной, постоянной, выходной информации, выбор математической модели.');
+SELECT add_stage_name('Выбор операционной системы, выбор языка программирования и системы управления базой данных.');
+SELECT add_stage_name('Разработка и отладка программного продукта. Испытание программы.');
+SELECT add_stage_name('Оформление проектной документации.');
+SELECT add_stage_name('Работа над экономическим разделом.');
+SELECT add_stage_name('Работа над разделом охраны труда и окружающей среды.');
+SELECT add_stage_name('Оформление пояснительной записки и графической части.');
+
