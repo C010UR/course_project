@@ -46,6 +46,11 @@ namespace CourseProject.Classes
             this.address = "";
             this.phone = "";
         }
+
+        public override string ToString()
+        {
+            return this.teacher_name;
+        }
     }
 
     public class Group
@@ -82,16 +87,18 @@ namespace CourseProject.Classes
         public string group_name { get; set; }
         public string student_name { get; set; }
         public string phone { get; set; }
+        public int theme_id { get; set; }
         public string theme_name { get; set; }
         public int percentage { get; set; }
 
-        public Student (int student_id, int group_id, string group_name, string student_name, string phone, string theme_name, int percentage)
+        public Student (int student_id, int group_id, string group_name, string student_name, string phone, int theme_id, string theme_name, int percentage)
         {
             this.student_id = student_id;
             this.group_id = group_id;
             this.group_name = group_name;
             this.student_name = student_name;
             this.phone = phone;
+            this.theme_id = theme_id;
             this.theme_name = theme_name;
             this.percentage = percentage;
         }
@@ -103,6 +110,7 @@ namespace CourseProject.Classes
             this.group_name = "";
             this.student_name = "";
             this.phone = "";
+            this.theme_id = 0;
             this.theme_name = "";
             this.percentage = 0;
         }
@@ -129,6 +137,11 @@ namespace CourseProject.Classes
             this.is_teacher = false;
             this.id = 0;
             this.name = "";
+        }
+
+        public override string ToString()
+        {
+            return this.name;
         }
     }
 

@@ -76,8 +76,8 @@ namespace CourseProject.Classes
             {
                 return new Student(
                     reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2),
-                    reader.GetString(3), reader.GetString(4),  reader.GetString(5),
-                    reader.GetInt32(6)
+                    reader.GetString(3), reader.GetString(4), reader.GetInt32(5),
+                    reader.GetString(6), reader.GetInt32(7)
                 );
             });
         }

@@ -108,7 +108,6 @@ namespace CourseProject.Forms
             // percentageBox
             // 
             this.percentageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.percentageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.percentageBox.Location = new System.Drawing.Point(356, 545);
             this.percentageBox.Name = "percentageBox";
             this.percentageBox.Size = new System.Drawing.Size(100, 27);

@@ -54,17 +54,21 @@ namespace CourseProject
         {
             foreach (ToolStripMenuItem item in menuStrip.Items)
                 item.ForeColor = Color.FromArgb(164, 165, 169);
-            ((ToolStripMenuItem)sender).ForeColor = Color.FromArgb(116, 86, 174);
+            if (sender != null)
+                ((ToolStripMenuItem)sender).ForeColor = Color.FromArgb(116, 86, 174);
         }
 
         public void hideAllControls()
         {
             studentProjectControl.Hide();
             teacherGroupsControl.Hide();
+            teacherGroupsThemesControl.Hide();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            teacherGroupsTimer.Start();
+
             // Initialize database connection
             ConnectionForm connection = new ConnectionForm();
             if (!Settings.LoadConStr())
@@ -107,7 +111,7 @@ namespace CourseProject
                 teacherGroupsControl.ItemsLoad();
 
                 // Activate menu strip button
-                setActive(menuStrip.Items[0]);
+                setActive(menuStrip.Items[1]);
             }
             else
             {
@@ -145,6 +149,31 @@ namespace CourseProject
             menuStrip.Items.Add(exit);
 
             menuStrip.ForeColor = Color.FromArgb(164, 165, 169);
+        }
+
+        private void teacherGroupsTimer_Tick(object sender, EventArgs e)
+        {
+            if (teacherGroupsControl.studentId > 0)
+            {
+                hideAllControls();
+                teacherGroupsThemesControl.Show();
+                teacherGroupsThemesControl.ItemsLoad(teacherGroupsControl.studentId, teacherGroupsControl.studentName, teacherGroupsControl.themeId);
+                
+                teacherGroupsControl.studentId = 0;
+                teacherGroupsControl.studentName = null;
+                teacherGroupsControl.themeId = 0;
+
+                setActive(null);
+            }
+
+            if (teacherGroupsThemesControl.exit)
+            {
+                hideAllControls();
+                teacherGroupsControl.Show();
+                teacherGroupsControl.ItemsLoad();
+
+                teacherGroupsThemesControl.exit = false;
+            }
         }
     }
 }

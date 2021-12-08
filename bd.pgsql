@@ -108,7 +108,7 @@ DROP FUNCTION IF EXISTS
 	add_student, update_student, delete_student, 
 	add_theme, update_theme, delete_theme, 
 	add_stage_name, update_stage_name, delete_stage_name, 
-	add_stage, update_stage, update_stage_only_percentage, delete_stage, 
+	add_stage, update_stage, update_stage_only_percentage, update_stage_teacher_dates, delete_stage, 
 	get_teacher_types, get_teachers, get_groups, get_students, get_users, get_themes, get_stage_names, get_stages,
 	check_password;
 
@@ -332,7 +332,7 @@ BEGIN
 		EXECUTE add_stage(_stage_names.stage_name_id, new_theme_id, 1, 0, CURRENT_DATE, CURRENT_DATE);
 	END LOOP;
 
-	RETURN 0;
+	RETURN new_theme_id;
 END;
 $$ LANGUAGE 'plpgsql';
 
@@ -452,6 +452,21 @@ BEGIN
 END;
 $$ LANGUAGE 'plpgsql';
 
+CREATE FUNCTION update_stage_teacher_dates (
+	_stage_id 		integer,
+	_teacher_id		integer,
+	_date_started	date,
+	_date_ended		date 
+)
+RETURNS void
+AS $$
+BEGIN 
+	UPDATE stages 
+	SET teacher_id = _teacher_id, date_started = _date_started, date_ended = _date_ended
+	WHERE stage_id = _stage_id;
+END;
+$$ LANGUAGE 'plpgsql';
+
 CREATE FUNCTION update_stage_only_percentage (_stage_id integer, _percentage integer)
 RETURNS void
 AS $$
@@ -530,6 +545,7 @@ RETURNS TABLE (
 	group_name		varchar,
 	student_name	varchar,
 	phone			varchar,
+	theme_id		integer,
 	theme_name		varchar,
 	percentage		integer
 )
@@ -538,11 +554,12 @@ BEGIN
 	RETURN QUERY
 	SELECT 
 		students.student_id, students.group_id, _groups.group_name,
-		students.student_name, students.phone, COALESCE(themes.theme_name, 'Отсутствует') AS theme_name,
+		students.student_name, students.phone, COALESCE(themes.theme_id, 0) AS theme_name, 
+		COALESCE(themes.theme_name, 'Отсутствует') AS theme_name,
 		COALESCE((
 			SELECT AVG(CASE WHEN stages.percentage > 100 THEN 100 ELSE stages.percentage END)::int AS percentage
 		 	FROM stages
-		 	WHERE theme_id = themes.theme_id
+		 	WHERE stages.theme_id = themes.theme_id
 		), 0)
 	FROM students
 	JOIN _groups USING (group_id)

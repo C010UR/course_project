@@ -133,6 +133,12 @@
     <Compile Include="Forms\TeacherGroupsControl.Designer.cs">
       <DependentUpon>TeacherGroupsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TeacherGroupsThemesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\TeacherGroupsThemesControl.Designer.cs">
+      <DependentUpon>TeacherGroupsThemesControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TeacherGroupsControl.resx">
       <DependentUpon>TeacherGroupsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TeacherGroupsThemesControl.resx">
+      <DependentUpon>TeacherGroupsThemesControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

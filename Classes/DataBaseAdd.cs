@@ -139,8 +139,13 @@ namespace CourseProject.Classes
                         command.Parameters.AddWithValue("_econ_teacher_id", econ_teacher_id);
                         command.Parameters.AddWithValue("_safe_teacher_id", safe_teacher_id);
                         command.Prepare();
-                        if ((int)command.ExecuteScalar() < 0)
+
+                        int ret = (int)command.ExecuteScalar();
+
+                        if (ret < 0)
                             return "Превышено количество тем на учителя!";
+                        else
+                            return ret.ToString();
                     }
                 }
                 catch (Exception exc)
@@ -152,7 +157,6 @@ namespace CourseProject.Classes
                     conn.Close();
                 }
             }
-            return "";
         }
 
         public static string StageName(string stage_name)

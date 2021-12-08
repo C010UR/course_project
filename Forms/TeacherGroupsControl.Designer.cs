@@ -36,11 +36,13 @@
             this.groupLabel = new System.Windows.Forms.Label();
             this.groupsListBox = new System.Windows.Forms.ListBox();
             this.groupsGrid = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.TeacherGroupsControlEllipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.student_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.theme_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.theme_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.percentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TeacherGroupsControlEllipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupsGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,8 +98,10 @@
             this.groupsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.groupsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.groupsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
             this.student_name,
             this.phone,
+            this.theme_id,
             this.theme_name,
             this.percentage});
             this.groupsGrid.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(223)))));
@@ -152,6 +156,19 @@
             this.groupsGrid.Size = new System.Drawing.Size(998, 596);
             this.groupsGrid.TabIndex = 3;
             this.groupsGrid.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Navy;
+            this.groupsGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.groupsGrid_CellMouseDoubleClick);
+            // 
+            // TeacherGroupsControlEllipse
+            // 
+            this.TeacherGroupsControlEllipse.ElipseRadius = 7;
+            this.TeacherGroupsControlEllipse.TargetControl = this.groupsGrid;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
             // student_name
             // 
@@ -165,6 +182,13 @@
             this.phone.Name = "phone";
             this.phone.ReadOnly = true;
             // 
+            // theme_id
+            // 
+            this.theme_id.HeaderText = "theme_id";
+            this.theme_id.Name = "theme_id";
+            this.theme_id.ReadOnly = true;
+            this.theme_id.Visible = false;
+            // 
             // theme_name
             // 
             this.theme_name.HeaderText = "Тема";
@@ -176,11 +200,6 @@
             this.percentage.HeaderText = "Процент выполнения";
             this.percentage.Name = "percentage";
             this.percentage.ReadOnly = true;
-            // 
-            // TeacherGroupsControlEllipse
-            // 
-            this.TeacherGroupsControlEllipse.ElipseRadius = 7;
-            this.TeacherGroupsControlEllipse.TargetControl = this.groupsGrid;
             // 
             // TeacherGroupsControl
             // 
@@ -205,10 +224,12 @@
         private System.Windows.Forms.Label groupLabel;
         private System.Windows.Forms.ListBox groupsListBox;
         private Bunifu.UI.WinForms.BunifuDataGridView groupsGrid;
+        private Bunifu.Framework.UI.BunifuElipse TeacherGroupsControlEllipse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn student_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn theme_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn theme_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn percentage;
-        private Bunifu.Framework.UI.BunifuElipse TeacherGroupsControlEllipse;
     }
 }

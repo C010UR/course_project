@@ -146,6 +146,8 @@ namespace CourseProject.Classes
                         command.Prepare();
                         if ((int)command.ExecuteScalar() < 0)
                             return "Превышено количество тем на учителя!";
+                        else
+                            return "";
                     }
                 }
                 catch (Exception exc)
@@ -157,7 +159,6 @@ namespace CourseProject.Classes
                     conn.Close();
                 }
             }
-            return "";
         }
 
         public static string StageName(int stage_name_id, string stage_name)
@@ -233,6 +234,36 @@ namespace CourseProject.Classes
                         command.Parameters.Clear();
                         command.Parameters.AddWithValue("_stage_id", stage_id);
                         command.Parameters.AddWithValue("_percentage", percentage);
+                        command.Prepare();
+                        command.ExecuteScalar();
+                    }
+                }
+                catch (Exception exc)
+                {
+                    return exc.Message;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return "";
+        }
+
+        public static string StageTeacherDates(int stage_id, int teacher_id, DateTime started_date, DateTime ended_date)
+        {
+            using (NpgsqlConnection conn = new NpgsqlConnection(Settings.conStr.ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT update_stage_teacher_dates(:_stage_id, :_teacher_id, :_started_date::date, :_ended_date::date);", conn))
+                    {
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("_stage_id", stage_id);
+                        command.Parameters.AddWithValue("_teacher_id", teacher_id);
+                        command.Parameters.AddWithValue("_started_date", started_date.ToString(@"yyyy-MM-dd"));
+                        command.Parameters.AddWithValue("_ended_date", ended_date.ToString(@"yyyy-MM-dd"));
                         command.Prepare();
                         command.ExecuteScalar();
                     }

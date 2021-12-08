@@ -46,10 +46,14 @@ namespace CourseProject.Forms
 
             if (lastTheme.Count == 0)
             {
-                themeNameLabel.Text = "У вас нету дипломных проектов.\nЕсли у вас должен быть дипломный проект, то обратитесь к преподавателю";
+                themeNameLabel.Text = "У вас нету дипломных проектов.\nЕсли у вас должен быть дипломный проект, то обратитесь к преподавателю.";
                 stagesList.Hide();
                 checkedLabel.Hide();
                 datesLabel.Hide();
+                percentageBar.Hide();
+                percentageBox.Hide();
+                percentageLabel.Hide();
+                currentProgressLabel.Hide();
             }
             else
             {

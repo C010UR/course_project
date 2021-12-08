@@ -21,7 +21,7 @@ namespace CourseProject.Forms
 
             foreach (User val in users)
             {
-                usernameBox.Items.Add(val.name);
+                usernameBox.Items.Add(val);
             }
         }
 
@@ -44,14 +44,15 @@ namespace CourseProject.Forms
                 MessageBox.Show("Логин либо пароль не верны", "Ошибка авторизации");
             else
             {
-                if (DataBaseGet.PasswordIsValid(users[usernameBox.SelectedIndex].id, passwordBox.Text))
+                if (DataBaseGet.PasswordIsValid(((User)usernameBox.SelectedItem).user_id, passwordBox.Text))
                 {
-                    Settings.user = users[usernameBox.SelectedIndex];
+                    Settings.user = (User)usernameBox.SelectedItem;
                     DialogResult = DialogResult.OK;
                 }
                 else
                 {
                     MessageBox.Show("Логин либо пароль не верны", "Ошибка авторизации");
+                    MessageBox.Show(((User)usernameBox.SelectedItem).id.ToString(), passwordBox.Text);
                 }
             } 
 
