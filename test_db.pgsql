@@ -72,7 +72,9 @@ SELECT * FROM get_stage_names();
 
 SELECT add_stage (1, 1, 1, 75, '2021-04-04', '2021-04-04');
 
-SELECT update_Stage ((SELECT MAX(stages.stage_id) FROM stages), 3, 3, 3, 100, '2020-05-05', '2020-05-05');
+SELECT update_stage ((SELECT MAX(stages.stage_id) FROM stages), 3, 3, 3, 100, '2020-05-05', '2020-05-05');
+
+SELECT update_stage_percentage_only (1, 30);
 
 SELECT delete_stage ((SELECT MAX(stages.stage_id) FROM stages));
 

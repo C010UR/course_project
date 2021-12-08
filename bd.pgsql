@@ -102,9 +102,13 @@ ALTER TABLE stages
 
 
 DROP FUNCTION IF EXISTS
-	add_teacher_type, update_teacher_type, delete_teacher_type, add_teacher, update_teacher, delete_teacher, 
-	add_group, update_group, delete_group, add_student, update_student, delete_student, add_theme, update_theme, 
-	delete_theme, add_stage_name, update_stage_name, delete_stage_name, add_stage, update_stage, delete_stage, 
+	add_teacher_type, update_teacher_type, delete_teacher_type, 
+	add_teacher, update_teacher, delete_teacher, 
+	add_group, update_group, delete_group, 
+	add_student, update_student, delete_student, 
+	add_theme, update_theme, delete_theme, 
+	add_stage_name, update_stage_name, delete_stage_name, 
+	add_stage, update_stage, update_stage_only_percentage, delete_stage, 
 	get_teacher_types, get_teachers, get_groups, get_students, get_users, get_themes, get_stage_names, get_stages,
 	check_password;
 
@@ -444,6 +448,16 @@ BEGIN
 		stage_name_id = _stage_name_id, theme_id = _theme_id,
 		teacher_id = _teacher_id, percentage = _percentage, 
 		date_started = _date_started, date_ended = _date_ended
+	WHERE stage_id = _stage_id;
+END;
+$$ LANGUAGE 'plpgsql';
+
+CREATE FUNCTION update_stage_only_percentage (_stage_id integer, _percentage integer)
+RETURNS void
+AS $$
+BEGIN
+	UPDATE stages
+	SET percentage = _percentage
 	WHERE stage_id = _stage_id;
 END;
 $$ LANGUAGE 'plpgsql';

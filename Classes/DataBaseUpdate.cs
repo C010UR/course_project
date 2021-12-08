@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Npgsql;
 
 namespace CourseProject.Classes
@@ -208,6 +205,34 @@ namespace CourseProject.Classes
                         command.Parameters.AddWithValue("_percentage", percentage);
                         command.Parameters.AddWithValue("_date_started", date_started.ToString(@"yyyy-MM-dd"));
                         command.Parameters.AddWithValue("_date_ended", date_ended.ToString(@"yyyy-MM-dd"));
+                        command.Prepare();
+                        command.ExecuteScalar();
+                    }
+                }
+                catch (Exception exc)
+                {
+                    return exc.Message;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return "";
+        }
+
+        public static string StagePercentageOnly(int stage_id, int percentage)
+        {
+            using (NpgsqlConnection conn = new NpgsqlConnection(Settings.conStr.ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT update_stage_only_percentage(:_stage_id, :_percentage);", conn))
+                    {
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("_stage_id", stage_id);
+                        command.Parameters.AddWithValue("_percentage", percentage);
                         command.Prepare();
                         command.ExecuteScalar();
                     }

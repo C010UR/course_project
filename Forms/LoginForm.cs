@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using CourseProject.Classes;
 
 namespace CourseProject.Forms
@@ -22,7 +17,7 @@ namespace CourseProject.Forms
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            users = DataBaseGet.Users();
+            users = DataBaseGet.Users("");
 
             foreach (User val in users)
             {

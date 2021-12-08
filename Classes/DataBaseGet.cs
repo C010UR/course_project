@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Npgsql;
 
 namespace CourseProject.Classes
 {
-    public delegate T Read<T>(NpgsqlDataReader reader);
     public static class DataBaseGet
     {
-        public static List<TeacherType> TeacherTypes()
+        public static List<T> Get<T>(string cmd, string custom_query_parameters, Func<NpgsqlDataReader, T> handler)
         {
-            List<TeacherType> buf = new List<TeacherType>();
+            List<T> buf = new List<T>();
             using (NpgsqlConnection conn = new NpgsqlConnection(Settings.conStr.ConnectionString))
             {
                 try
                 {
                     conn.Open();
-                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_teacher_types();", conn))
+                    using (NpgsqlCommand command = new NpgsqlCommand(cmd + " " + custom_query_parameters, conn))
                     {
                         command.Parameters.Clear();
                         command.Prepare();
@@ -26,9 +23,7 @@ namespace CourseProject.Classes
                         {
                             while (reader.Read())
                             {
-                                buf.Add(new TeacherType(
-                                    reader.GetInt32(0), reader.GetString(1)
-                                ));
+                                buf.Add(handler(reader));
                             }
                         }
                     }
@@ -45,255 +40,85 @@ namespace CourseProject.Classes
             return buf;
         }
 
-        public static List<Teacher> Teachers()
+        public static List<TeacherType> TeacherTypes(string custom_query_parameters)
         {
-            List<Teacher> buf = new List<Teacher>();
-            using (NpgsqlConnection conn = new NpgsqlConnection(Settings.conStr.ConnectionString))
+            return Get("SELECT * FROM get_teacher_types()", custom_query_parameters, (reader) =>
             {
-                try
-                {
-                    conn.Open();
-                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_teachers();", conn))
-                    {
-                        command.Parameters.Clear();
-                        command.Prepare();
-                        using (NpgsqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                buf.Add(new Teacher(
-                                    reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2),
-                                    reader.GetString(3), reader.GetString(4), reader.GetString(5)
-                                ));
-                            }
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-            return buf;
+                return new TeacherType(reader.GetInt32(0), reader.GetString(1));
+            });
         }
 
-        public static List<Group> Groups()
+        public static List<Teacher> Teachers(string custom_query_parameters)
         {
-            List<Group> buf = new List<Group>();
-            using (NpgsqlConnection conn = new NpgsqlConnection(Settings.conStr.ConnectionString))
+            return Get("SELECT * FROM get_teachers()", custom_query_parameters, (reader) =>
             {
-                try
-                {
-                    conn.Open();
-                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_groups();", conn))
-                    {
-                        command.Parameters.Clear();
-                        command.Prepare();
-                        using (NpgsqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                buf.Add(new Group(
-                                    reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2),
-                                    reader.GetString(3), reader.GetInt32(4)
-                                ));
-                            }
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-            return buf;
+                return new Teacher(
+                    reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2),
+                    reader.GetString(3), reader.GetString(4), reader.GetString(5)
+                );
+            });
         }
 
-        public static List<Student> Students()
+        public static List<Group> Groups(string custom_query_parameters)
         {
-            List<Student> buf = new List<Student>();
-            using (NpgsqlConnection conn = new NpgsqlConnection(Settings.conStr.ConnectionString))
+            return Get("SELECT * FROM get_groups()", custom_query_parameters, (reader) =>
             {
-                try
-                {
-                    conn.Open();
-                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_students();", conn))
-                    {
-                        command.Parameters.Clear();
-                        command.Prepare();
-                        using (NpgsqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                buf.Add(new Student(
-                                    reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2),
-                                    reader.GetString(3), reader.GetString(4)
-                                ));
-                            }
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-            return buf;
+                return new Group(
+                    reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2),
+                    reader.GetString(3), reader.GetInt32(4)
+                );
+            });
         }
 
-        public static List<User> Users()
+        public static List<Student> Students(string custom_query_parameters)
         {
-            List<User> buf = new List<User>();
-            using (NpgsqlConnection conn = new NpgsqlConnection(Settings.conStr.ConnectionString))
+            return Get("SELECT * FROM get_students()", custom_query_parameters, (reader) =>
             {
-                try
-                {
-                    conn.Open();
+                return new Student(
+                    reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2),
+                    reader.GetString(3), reader.GetString(4)
+                );
+            });
+        }
 
-                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_users();", conn))
-                    {
-                        command.Parameters.Clear();
-                        command.Prepare();
-                        using (NpgsqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                buf.Add(new User(reader.GetInt32(0), reader.GetBoolean(1), reader.GetInt32(2), reader.GetString(3)));
-                            }
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-            return buf;
+        public static List<User> Users(string custom_query_parameters)
+        {
+            return Get("SELECT * FROM get_users()", custom_query_parameters, (reader) =>
+            {
+                return new User(reader.GetInt32(0), reader.GetBoolean(1), reader.GetInt32(2), reader.GetString(3));
+            });
         }
 
         public static List<Theme> Themes(string custom_query_parameters)
         {
-            List<Theme> buf = new List<Theme>();
-            using (NpgsqlConnection conn = new NpgsqlConnection(Settings.conStr.ConnectionString))
+            return Get("SELECT * FROM get_themes()", custom_query_parameters, (reader) =>
             {
-                try
-                {
-                    conn.Open();
-                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_themes() " + custom_query_parameters, conn))
-                    {
-                        command.Parameters.Clear();
-                        command.Prepare();
-                        using (NpgsqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                buf.Add(new Theme(
-                                    reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2),
-                                    reader.GetString(3), reader.GetInt32(4), reader.GetInt32(5),
-                                    reader.GetInt32(6)
-                                ));
-                            }
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-            return buf;
+                return new Theme(
+                    reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2),
+                    reader.GetString(3), reader.GetInt32(4), reader.GetInt32(5),
+                    reader.GetInt32(6)
+                );
+            });
         }
 
-        public static List<StageName> StageNames()
+        public static List<StageName> StageNames(string custom_query_parameters)
         {
-            List<StageName> buf = new List<StageName>();
-            using (NpgsqlConnection conn = new NpgsqlConnection(Settings.conStr.ConnectionString))
+            return Get("SELECT * FROM get_stage_names()", custom_query_parameters, (reader) =>
             {
-                try
-                {
-                    conn.Open();
-                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_stage_names();", conn))
-                    {
-                        command.Parameters.Clear();
-                        command.Prepare();
-                        using (NpgsqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                buf.Add(new StageName(
-                                    reader.GetInt32(0), reader.GetString(1)
-                                ));
-                            }
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-            return buf;
+                return new StageName(reader.GetInt32(0), reader.GetString(1));
+            });
         }
 
         public static List<Stage> Stages(string custom_query_parameters)
         {
-            List<Stage> buf = new List<Stage>();
-            using (NpgsqlConnection conn = new NpgsqlConnection(Settings.conStr.ConnectionString))
+            return Get("SELECT * FROM get_stages()", custom_query_parameters, (reader) =>
             {
-                try
-                {
-                    conn.Open();
-                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_stages() " + custom_query_parameters, conn))
-                    {
-                        command.Parameters.Clear();
-                        command.Prepare();
-                        using (NpgsqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                buf.Add(new Stage(
-                                    reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2),
-                                    reader.GetInt32(3), reader.GetInt32(4), reader.GetString(5),
-                                    reader.GetInt32(6), reader.GetDateTime(7), reader.GetDateTime(8)
-                                ));
-                            }
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-            return buf;
+                return new Stage(
+                    reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2),
+                    reader.GetInt32(3), reader.GetInt32(4), reader.GetString(5),
+                    reader.GetInt32(6), reader.GetDateTime(7), reader.GetDateTime(8)
+                );
+            });
         }
 
         public static bool PasswordIsValid(int id, string pass)

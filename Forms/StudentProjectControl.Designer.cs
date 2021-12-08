@@ -29,6 +29,7 @@ namespace CourseProject.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.stagesList = new System.Windows.Forms.ListBox();
             this.themeNameLabel = new System.Windows.Forms.Label();
             this.checkedLabel = new System.Windows.Forms.Label();
@@ -36,6 +37,8 @@ namespace CourseProject.Forms
             this.percentageBar = new System.Windows.Forms.TrackBar();
             this.percentageBox = new System.Windows.Forms.TextBox();
             this.percentageLabel = new System.Windows.Forms.Label();
+            this.updateTimer = new System.Windows.Forms.Timer(this.components);
+            this.currentProgressLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.percentageBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,7 +97,7 @@ namespace CourseProject.Forms
             // 
             this.percentageBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.percentageBar.LargeChange = 10;
-            this.percentageBar.Location = new System.Drawing.Point(37, 516);
+            this.percentageBar.Location = new System.Drawing.Point(37, 545);
             this.percentageBar.Maximum = 100;
             this.percentageBar.Name = "percentageBar";
             this.percentageBar.Size = new System.Drawing.Size(313, 45);
@@ -106,7 +109,7 @@ namespace CourseProject.Forms
             // 
             this.percentageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.percentageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.percentageBox.Location = new System.Drawing.Point(356, 516);
+            this.percentageBox.Location = new System.Drawing.Point(356, 545);
             this.percentageBox.Name = "percentageBox";
             this.percentageBox.Size = new System.Drawing.Size(100, 27);
             this.percentageBox.TabIndex = 3;
@@ -118,11 +121,28 @@ namespace CourseProject.Forms
             this.percentageLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.percentageLabel.AutoSize = true;
             this.percentageLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.percentageLabel.Location = new System.Drawing.Point(456, 518);
+            this.percentageLabel.Location = new System.Drawing.Point(458, 547);
             this.percentageLabel.Name = "percentageLabel";
             this.percentageLabel.Size = new System.Drawing.Size(24, 22);
             this.percentageLabel.TabIndex = 4;
             this.percentageLabel.Text = "%";
+            // 
+            // updateTimer
+            // 
+            this.updateTimer.Interval = 1000;
+            this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
+            // 
+            // currentProgressLabel
+            // 
+            this.currentProgressLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.currentProgressLabel.AutoSize = true;
+            this.currentProgressLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.currentProgressLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
+            this.currentProgressLabel.Location = new System.Drawing.Point(33, 522);
+            this.currentProgressLabel.Name = "currentProgressLabel";
+            this.currentProgressLabel.Size = new System.Drawing.Size(151, 20);
+            this.currentProgressLabel.TabIndex = 0;
+            this.currentProgressLabel.Text = "Текущий прогресс";
             // 
             // StudentProjectControl
             // 
@@ -132,6 +152,7 @@ namespace CourseProject.Forms
             this.Controls.Add(this.percentageLabel);
             this.Controls.Add(this.percentageBox);
             this.Controls.Add(this.percentageBar);
+            this.Controls.Add(this.currentProgressLabel);
             this.Controls.Add(this.datesLabel);
             this.Controls.Add(this.checkedLabel);
             this.Controls.Add(this.themeNameLabel);
@@ -156,5 +177,7 @@ namespace CourseProject.Forms
         private System.Windows.Forms.TrackBar percentageBar;
         private System.Windows.Forms.TextBox percentageBox;
         private System.Windows.Forms.Label percentageLabel;
+        private System.Windows.Forms.Timer updateTimer;
+        private System.Windows.Forms.Label currentProgressLabel;
     }
 }
