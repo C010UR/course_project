@@ -52,6 +52,11 @@ namespace CourseProject
             ((ToolStripMenuItem)sender).ForeColor = Color.FromArgb(116, 86, 174);
         }
 
+        public void hideAllControls()
+        {
+            studentProjectControl.Hide();
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             // Initialize database connection
@@ -89,6 +94,9 @@ namespace CourseProject
                 groups.ShortcutKeys = Keys.Control | Keys.W;
                 groups.Click += teacherGroupsToolStripMenuItem_Click;
                 menuStrip.Items.Add(groups);
+
+                // Show TeacherGroupsControl and hide others
+                hideAllControls();
             }
             else
             {
@@ -102,6 +110,11 @@ namespace CourseProject
                 project.ShortcutKeys = Keys.Control | Keys.Q;
                 project.Click += studentProjectsToolStripMenuItem_Click;
                 menuStrip.Items.Add(project);
+
+                // Show StudentProjectControl and hide others
+                hideAllControls();
+                studentProjectControl.Show();
+                studentProjectControl.ItemsLoad();
             }
 
             // Add additional menu strip items

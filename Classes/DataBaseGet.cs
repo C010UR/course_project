@@ -259,7 +259,7 @@ namespace CourseProject.Classes
             return buf;
         }
 
-        public static List<Stage> Stages()
+        public static List<Stage> Stages(string custom_query_parameters)
         {
             List<Stage> buf = new List<Stage>();
             using (NpgsqlConnection conn = new NpgsqlConnection(Settings.conStr.ConnectionString))
@@ -267,7 +267,7 @@ namespace CourseProject.Classes
                 try
                 {
                     conn.Open();
-                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_stages();", conn))
+                    using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM get_stages() " + custom_query_parameters, conn))
                     {
                         command.Parameters.Clear();
                         command.Prepare();
@@ -321,7 +321,6 @@ namespace CourseProject.Classes
                     conn.Close();
                 }
             }
-            return false;
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.studentProjectControl = new CourseProject.Forms.StudentProjectControl();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -42,12 +43,23 @@
             this.menuStrip.Size = new System.Drawing.Size(1264, 24);
             this.menuStrip.TabIndex = 0;
             // 
+            // studentProjectControl
+            // 
+            this.studentProjectControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.studentProjectControl.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studentProjectControl.Location = new System.Drawing.Point(0, 24);
+            this.studentProjectControl.Margin = new System.Windows.Forms.Padding(5);
+            this.studentProjectControl.Name = "studentProjectControl";
+            this.studentProjectControl.Size = new System.Drawing.Size(1264, 657);
+            this.studentProjectControl.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.GhostWhite;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.studentProjectControl);
             this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -65,6 +77,7 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip;
+        private Forms.StudentProjectControl studentProjectControl;
     }
 }
 
