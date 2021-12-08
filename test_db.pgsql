@@ -62,9 +62,9 @@ SELECT * FROM get_themes();
 
 SELECT add_stage_name ('stage name 8');
 
-SELECT update_stage_name ((SELECT MAX(stage_names.stage_name_id) FROM themes), 'stage name 9');
+SELECT update_stage_name ((SELECT MAX(stage_names.stage_name_id) FROM stage_names), 'stage name 9');
 
-SELECT delete_stage_name ((SELECT MAX(stage_names.stage_name_id) FROM themes));
+SELECT delete_stage_name ((SELECT MAX(stage_names.stage_name_id) FROM stage_names));
 
 SELECT * FROM get_stage_names();
 

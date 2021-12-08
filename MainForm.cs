@@ -115,6 +115,9 @@ namespace CourseProject
                 hideAllControls();
                 studentProjectControl.Show();
                 studentProjectControl.ItemsLoad();
+
+                // Activate menu strip button
+                setActive(menuStrip.Items[0]);
             }
 
             // Add additional menu strip items

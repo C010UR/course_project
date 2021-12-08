@@ -603,7 +603,8 @@ BEGIN
 		stages.percentage, stages.date_started, stages.date_ended
 	FROM stages
 	JOIN stage_names USING (stage_name_id)
-	JOIN teachers USING (teacher_id);
+	JOIN teachers USING (teacher_id)
+	ORDER BY theme_id, stage_name_id;
 END;
 $$ LANGUAGE 'plpgsql';
 
