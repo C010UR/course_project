@@ -60,6 +60,7 @@
             this.stageDateStartedLabel = new System.Windows.Forms.Label();
             this.stageDateEndedLabel = new System.Windows.Forms.Label();
             this.stageEditButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.stagesGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,7 +143,7 @@
             this.stagesGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.stagesGrid.RowHeadersVisible = false;
             this.stagesGrid.RowTemplate.DividerHeight = 1;
-            this.stagesGrid.RowTemplate.Height = 50;
+            this.stagesGrid.RowTemplate.Height = 40;
             this.stagesGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.stagesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.stagesGrid.Size = new System.Drawing.Size(1220, 271);
@@ -208,7 +209,7 @@
             // 
             this.themeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.themeBox.Location = new System.Drawing.Point(37, 124);
+            this.themeBox.Location = new System.Drawing.Point(37, 90);
             this.themeBox.Name = "themeBox";
             this.themeBox.Size = new System.Drawing.Size(543, 27);
             this.themeBox.TabIndex = 1;
@@ -218,7 +219,7 @@
             this.themeLabel.AutoSize = true;
             this.themeLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.themeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
-            this.themeLabel.Location = new System.Drawing.Point(33, 101);
+            this.themeLabel.Location = new System.Drawing.Point(33, 67);
             this.themeLabel.Name = "themeLabel";
             this.themeLabel.Size = new System.Drawing.Size(45, 20);
             this.themeLabel.TabIndex = 8;
@@ -226,10 +227,11 @@
             // 
             // mainTeacherLabel
             // 
+            this.mainTeacherLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mainTeacherLabel.AutoSize = true;
             this.mainTeacherLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.mainTeacherLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
-            this.mainTeacherLabel.Location = new System.Drawing.Point(33, 154);
+            this.mainTeacherLabel.Location = new System.Drawing.Point(710, 67);
             this.mainTeacherLabel.Name = "mainTeacherLabel";
             this.mainTeacherLabel.Size = new System.Drawing.Size(291, 20);
             this.mainTeacherLabel.TabIndex = 8;
@@ -237,10 +239,11 @@
             // 
             // econTeacherLabel
             // 
+            this.econTeacherLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.econTeacherLabel.AutoSize = true;
             this.econTeacherLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.econTeacherLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
-            this.econTeacherLabel.Location = new System.Drawing.Point(33, 210);
+            this.econTeacherLabel.Location = new System.Drawing.Point(710, 123);
             this.econTeacherLabel.Name = "econTeacherLabel";
             this.econTeacherLabel.Size = new System.Drawing.Size(337, 20);
             this.econTeacherLabel.TabIndex = 8;
@@ -248,10 +251,11 @@
             // 
             // safeTeacherLabel
             // 
+            this.safeTeacherLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.safeTeacherLabel.AutoSize = true;
             this.safeTeacherLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.safeTeacherLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
-            this.safeTeacherLabel.Location = new System.Drawing.Point(33, 266);
+            this.safeTeacherLabel.Location = new System.Drawing.Point(710, 179);
             this.safeTeacherLabel.Name = "safeTeacherLabel";
             this.safeTeacherLabel.Size = new System.Drawing.Size(312, 20);
             this.safeTeacherLabel.TabIndex = 8;
@@ -259,39 +263,36 @@
             // 
             // mainTeacherBox
             // 
-            this.mainTeacherBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainTeacherBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mainTeacherBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.mainTeacherBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.mainTeacherBox.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold);
+            this.mainTeacherBox.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainTeacherBox.FormattingEnabled = true;
-            this.mainTeacherBox.Location = new System.Drawing.Point(37, 177);
+            this.mainTeacherBox.Location = new System.Drawing.Point(714, 90);
             this.mainTeacherBox.Name = "mainTeacherBox";
             this.mainTeacherBox.Size = new System.Drawing.Size(543, 30);
             this.mainTeacherBox.TabIndex = 2;
             // 
             // econTeacherBox
             // 
-            this.econTeacherBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.econTeacherBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.econTeacherBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.econTeacherBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.econTeacherBox.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold);
+            this.econTeacherBox.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.econTeacherBox.FormattingEnabled = true;
-            this.econTeacherBox.Location = new System.Drawing.Point(37, 233);
+            this.econTeacherBox.Location = new System.Drawing.Point(714, 146);
             this.econTeacherBox.Name = "econTeacherBox";
             this.econTeacherBox.Size = new System.Drawing.Size(543, 30);
             this.econTeacherBox.TabIndex = 3;
             // 
             // safeTeacherBox
             // 
-            this.safeTeacherBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.safeTeacherBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.safeTeacherBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.safeTeacherBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.safeTeacherBox.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold);
+            this.safeTeacherBox.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.safeTeacherBox.FormattingEnabled = true;
-            this.safeTeacherBox.Location = new System.Drawing.Point(37, 289);
+            this.safeTeacherBox.Location = new System.Drawing.Point(714, 202);
             this.safeTeacherBox.Name = "safeTeacherBox";
             this.safeTeacherBox.Size = new System.Drawing.Size(543, 30);
             this.safeTeacherBox.TabIndex = 4;
@@ -304,7 +305,7 @@
             this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteButton.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.deleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.deleteButton.Location = new System.Drawing.Point(610, 253);
+            this.deleteButton.Location = new System.Drawing.Point(819, 259);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(216, 30);
             this.deleteButton.TabIndex = 7;
@@ -320,7 +321,7 @@
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.addButton.Location = new System.Drawing.Point(610, 289);
+            this.addButton.Location = new System.Drawing.Point(1041, 259);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(216, 30);
             this.addButton.TabIndex = 5;
@@ -336,7 +337,7 @@
             this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateButton.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.updateButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.updateButton.Location = new System.Drawing.Point(610, 289);
+            this.updateButton.Location = new System.Drawing.Point(1041, 259);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(216, 30);
             this.updateButton.TabIndex = 6;
@@ -362,11 +363,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.stageTeacherBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.stageTeacherBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.stageTeacherBox.Font = new System.Drawing.Font("Montserrat SemiBold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.stageTeacherBox.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stageTeacherBox.FormattingEnabled = true;
             this.stageTeacherBox.Location = new System.Drawing.Point(37, 622);
             this.stageTeacherBox.Name = "stageTeacherBox";
-            this.stageTeacherBox.Size = new System.Drawing.Size(543, 34);
+            this.stageTeacherBox.Size = new System.Drawing.Size(543, 30);
             this.stageTeacherBox.TabIndex = 9;
             // 
             // stageDateStartedPicker
@@ -374,7 +375,7 @@
             this.stageDateStartedPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.stageDateStartedPicker.CustomFormat = "dd.MM.yyyy";
             this.stageDateStartedPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.stageDateStartedPicker.Location = new System.Drawing.Point(37, 686);
+            this.stageDateStartedPicker.Location = new System.Drawing.Point(609, 624);
             this.stageDateStartedPicker.Name = "stageDateStartedPicker";
             this.stageDateStartedPicker.Size = new System.Drawing.Size(172, 27);
             this.stageDateStartedPicker.TabIndex = 10;
@@ -385,7 +386,7 @@
             this.stageDateEndedPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.stageDateEndedPicker.CustomFormat = "dd.MM.yyyy";
             this.stageDateEndedPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.stageDateEndedPicker.Location = new System.Drawing.Point(263, 686);
+            this.stageDateEndedPicker.Location = new System.Drawing.Point(810, 624);
             this.stageDateEndedPicker.Name = "stageDateEndedPicker";
             this.stageDateEndedPicker.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.stageDateEndedPicker.Size = new System.Drawing.Size(172, 27);
@@ -398,7 +399,7 @@
             this.stageDateStartedLabel.AutoSize = true;
             this.stageDateStartedLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.stageDateStartedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
-            this.stageDateStartedLabel.Location = new System.Drawing.Point(33, 659);
+            this.stageDateStartedLabel.Location = new System.Drawing.Point(605, 597);
             this.stageDateStartedLabel.Name = "stageDateStartedLabel";
             this.stageDateStartedLabel.Size = new System.Drawing.Size(99, 20);
             this.stageDateStartedLabel.TabIndex = 8;
@@ -410,7 +411,7 @@
             this.stageDateEndedLabel.AutoSize = true;
             this.stageDateEndedLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.stageDateEndedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
-            this.stageDateEndedLabel.Location = new System.Drawing.Point(259, 659);
+            this.stageDateEndedLabel.Location = new System.Drawing.Point(806, 597);
             this.stageDateEndedLabel.Name = "stageDateEndedLabel";
             this.stageDateEndedLabel.Size = new System.Drawing.Size(130, 20);
             this.stageDateEndedLabel.TabIndex = 8;
@@ -424,7 +425,7 @@
             this.stageEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.stageEditButton.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.stageEditButton.ForeColor = System.Drawing.Color.GhostWhite;
-            this.stageEditButton.Location = new System.Drawing.Point(1041, 683);
+            this.stageEditButton.Location = new System.Drawing.Point(1041, 624);
             this.stageEditButton.Name = "stageEditButton";
             this.stageEditButton.Size = new System.Drawing.Size(216, 30);
             this.stageEditButton.TabIndex = 12;
@@ -432,11 +433,22 @@
             this.stageEditButton.UseVisualStyleBackColor = false;
             this.stageEditButton.Click += new System.EventHandler(this.stageEditButton_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.panel1.Location = new System.Drawing.Point(37, 295);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1220, 3);
+            this.panel1.TabIndex = 13;
+            // 
             // TeacherGroupsThemesControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GhostWhite;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.stageEditButton);
             this.Controls.Add(this.stageDateEndedPicker);
             this.Controls.Add(this.stageDateStartedPicker);
@@ -496,5 +508,6 @@
         private System.Windows.Forms.Label stageDateStartedLabel;
         private System.Windows.Forms.Label stageDateEndedLabel;
         private System.Windows.Forms.Button stageEditButton;
+        private System.Windows.Forms.Panel panel1;
     }
 }

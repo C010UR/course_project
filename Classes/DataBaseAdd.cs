@@ -143,7 +143,7 @@ namespace CourseProject.Classes
                         int ret = (int)command.ExecuteScalar();
 
                         if (ret < 0)
-                            return "Превышено количество тем на учителя!";
+                            return "Превышено количество тем на преподавателя!";
                         else
                             return ret.ToString();
                     }

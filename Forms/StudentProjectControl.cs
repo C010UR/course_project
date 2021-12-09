@@ -33,10 +33,6 @@ namespace CourseProject.Forms
             stagesList.DrawItem += lst_DrawItem;
         }
 
-        private void StudentProjectControl_Load(object sender, EventArgs e)
-        {     
-        }
-
         public void ItemsLoad()
         {
             lastTheme = DataBaseGet.Themes("WHERE student_id = " + Settings.user.id + " ORDER BY theme_id DESC LIMIT 1");

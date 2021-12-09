@@ -47,11 +47,6 @@ namespace CourseProject.Forms
 
         private void groupsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateGrid();
-        }
-
-        private void UpdateGrid()
-        {
             if (students != null)
                 students.Clear();
             groupsGrid.Rows.Clear();

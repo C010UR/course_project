@@ -63,11 +63,11 @@
             // 
             this.usernameBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.usernameBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.usernameBox.Font = new System.Drawing.Font("Montserrat SemiBold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.usernameBox.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.usernameBox.FormattingEnabled = true;
             this.usernameBox.Location = new System.Drawing.Point(37, 112);
             this.usernameBox.Name = "usernameBox";
-            this.usernameBox.Size = new System.Drawing.Size(216, 34);
+            this.usernameBox.Size = new System.Drawing.Size(216, 30);
             this.usernameBox.TabIndex = 2;
             // 
             // passwordLabel
@@ -81,11 +81,11 @@
             // 
             // passwordBox
             // 
-            this.passwordBox.Font = new System.Drawing.Font("Montserrat SemiBold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordBox.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwordBox.Location = new System.Drawing.Point(37, 203);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '*';
-            this.passwordBox.Size = new System.Drawing.Size(216, 30);
+            this.passwordBox.Size = new System.Drawing.Size(216, 27);
             this.passwordBox.TabIndex = 3;
             // 
             // showPassCheck
