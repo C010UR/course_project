@@ -154,6 +154,9 @@ namespace CourseProject.Classes
         public int main_teacher_id { get; set; }
         public int econ_teacher_id { get; set; }
         public int safe_teacher_id { get; set; }
+        public string main_teacher_name { get; set; }
+        public string econ_teacher_name { get; set; }
+        public string safe_teacher_name { get; set; }
 
         public Theme (int theme_id, int student_id, string student_name, string theme_name, int main_teacher_id, int econ_teacher_id, int safe_teacher_id)
         {
@@ -164,6 +167,9 @@ namespace CourseProject.Classes
             this.main_teacher_id = main_teacher_id;
             this.econ_teacher_id = econ_teacher_id;
             this.safe_teacher_id = safe_teacher_id;
+            this.main_teacher_name = "";
+            this.econ_teacher_name = "";
+            this.safe_teacher_name = "";
         }
 
         public Theme ()
@@ -175,6 +181,16 @@ namespace CourseProject.Classes
             this.main_teacher_id = 0;
             this.econ_teacher_id = 0;
             this.safe_teacher_id = 0;
+            this.main_teacher_name = "";
+            this.econ_teacher_name = "";
+            this.safe_teacher_name = "";
+        }
+
+        public void AddTeacherNames(string main_teacher_name, string econ_teacher_name, string safe_teacher_name)
+        {
+            this.main_teacher_name = main_teacher_name;
+            this.econ_teacher_name = econ_teacher_name;
+            this.safe_teacher_name = safe_teacher_name;
         }
     }
 

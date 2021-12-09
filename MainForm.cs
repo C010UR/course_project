@@ -28,6 +28,11 @@ namespace CourseProject
         private void teacherProjectsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             setActive(sender);
+
+            // Show TeacherProjectsControl and hide others
+            hideAllControls();
+            teacherProjectsControl.Show();
+            teacherProjectsControl.ItemsLoad();
         }
 
         private void teacherGroupsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,6 +68,7 @@ namespace CourseProject
             studentProjectControl.Hide();
             teacherGroupsControl.Hide();
             teacherGroupsThemesControl.Hide();
+            teacherProjectsControl.Hide();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -93,15 +99,19 @@ namespace CourseProject
                 this.Text = "Преподаватель: " + Settings.user.name;
 
                 // Add menu strip items
-                ToolStripMenuItem project = new ToolStripMenuItem("projects");
-                project.Text = "Курсовые проекты";
-                project.ShortcutKeys = Keys.Control | Keys.Q;
+                ToolStripMenuItem project = new ToolStripMenuItem("projects")
+                {
+                    Text = "Курсовые проекты",
+                    ShortcutKeys = Keys.Control | Keys.Q
+                };
                 project.Click += teacherProjectsToolStripMenuItem_Click;
                 menuStrip.Items.Add(project);
 
-                ToolStripMenuItem groups = new ToolStripMenuItem("groups");
-                groups.Text = "Группы";
-                groups.ShortcutKeys = Keys.Control | Keys.W;
+                ToolStripMenuItem groups = new ToolStripMenuItem("groups")
+                {
+                    Text = "Группы",
+                    ShortcutKeys = Keys.Control | Keys.W
+                };
                 groups.Click += teacherGroupsToolStripMenuItem_Click;
                 menuStrip.Items.Add(groups);
 
@@ -120,9 +130,11 @@ namespace CourseProject
                 this.Text = "Учащийся: " + Settings.user.name;
 
                 // Add menu strip items
-                ToolStripMenuItem project = new ToolStripMenuItem("projects");
-                project.Text = "Курсовые проекты";
-                project.ShortcutKeys = Keys.Control | Keys.Q;
+                ToolStripMenuItem project = new ToolStripMenuItem("projects")
+                {
+                    Text = "Курсовые проекты",
+                    ShortcutKeys = Keys.Control | Keys.Q
+                };
                 project.Click += studentProjectsToolStripMenuItem_Click;
                 menuStrip.Items.Add(project);
 
@@ -136,16 +148,20 @@ namespace CourseProject
             }
 
             // Add additional menu strip items
-            ToolStripMenuItem logout = new ToolStripMenuItem("logout");
-            logout.Text = "Выход";
-            logout.ShortcutKeys = Keys.Control | Keys.R;
+            ToolStripMenuItem logout = new ToolStripMenuItem("logout")
+            {
+                Text = "Выход",
+                ShortcutKeys = Keys.Control | Keys.R
+            };
             logout.Click += logoutToolStripMenuItem_Click;
             menuStrip.Items.Add(logout);
 
-            ToolStripMenuItem exit = new ToolStripMenuItem("exit");
-            exit.Text = "Завершить работу";
-            exit.ShortcutKeys = Keys.Control | Keys.T;
-            exit.Click += exitToolStripMenuItem_Click;
+            ToolStripMenuItem exit = new ToolStripMenuItem("exit")
+            {
+                Text = "Завершить работу",
+                ShortcutKeys = Keys.Control | Keys.T
+            };
+            Click += exitToolStripMenuItem_Click;
             menuStrip.Items.Add(exit);
 
             menuStrip.ForeColor = Color.FromArgb(164, 165, 169);

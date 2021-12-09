@@ -39,6 +39,9 @@ namespace CourseProject.Forms
             this.percentageLabel = new System.Windows.Forms.Label();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.currentProgressLabel = new System.Windows.Forms.Label();
+            this.mainTeacherName = new System.Windows.Forms.Label();
+            this.econTeacherName = new System.Windows.Forms.Label();
+            this.safeTeacherName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.percentageBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,6 +146,42 @@ namespace CourseProject.Forms
             this.currentProgressLabel.TabIndex = 0;
             this.currentProgressLabel.Text = "Текущий прогресс";
             // 
+            // mainTeacherName
+            // 
+            this.mainTeacherName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.mainTeacherName.AutoSize = true;
+            this.mainTeacherName.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mainTeacherName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
+            this.mainTeacherName.Location = new System.Drawing.Point(563, 432);
+            this.mainTeacherName.Name = "mainTeacherName";
+            this.mainTeacherName.Size = new System.Drawing.Size(295, 20);
+            this.mainTeacherName.TabIndex = 0;
+            this.mainTeacherName.Text = "Руководитель по основному разделу:";
+            // 
+            // econTeacherName
+            // 
+            this.econTeacherName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.econTeacherName.AutoSize = true;
+            this.econTeacherName.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.econTeacherName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
+            this.econTeacherName.Location = new System.Drawing.Point(563, 452);
+            this.econTeacherName.Name = "econTeacherName";
+            this.econTeacherName.Size = new System.Drawing.Size(341, 20);
+            this.econTeacherName.TabIndex = 0;
+            this.econTeacherName.Text = "Руководитель по экономическому разделу:";
+            // 
+            // safeTeacherName
+            // 
+            this.safeTeacherName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.safeTeacherName.AutoSize = true;
+            this.safeTeacherName.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.safeTeacherName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
+            this.safeTeacherName.Location = new System.Drawing.Point(563, 472);
+            this.safeTeacherName.Name = "safeTeacherName";
+            this.safeTeacherName.Size = new System.Drawing.Size(316, 20);
+            this.safeTeacherName.TabIndex = 0;
+            this.safeTeacherName.Text = "Руководитель по разделу охраны труда:";
+            // 
             // StudentProjectControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -152,6 +191,9 @@ namespace CourseProject.Forms
             this.Controls.Add(this.percentageBox);
             this.Controls.Add(this.percentageBar);
             this.Controls.Add(this.currentProgressLabel);
+            this.Controls.Add(this.safeTeacherName);
+            this.Controls.Add(this.econTeacherName);
+            this.Controls.Add(this.mainTeacherName);
             this.Controls.Add(this.datesLabel);
             this.Controls.Add(this.checkedLabel);
             this.Controls.Add(this.themeNameLabel);
@@ -178,5 +220,8 @@ namespace CourseProject.Forms
         private System.Windows.Forms.Label percentageLabel;
         private System.Windows.Forms.Timer updateTimer;
         private System.Windows.Forms.Label currentProgressLabel;
+        private System.Windows.Forms.Label mainTeacherName;
+        private System.Windows.Forms.Label econTeacherName;
+        private System.Windows.Forms.Label safeTeacherName;
     }
 }

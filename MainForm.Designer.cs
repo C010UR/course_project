@@ -35,6 +35,7 @@
             this.studentProjectControl = new CourseProject.Forms.StudentProjectControl();
             this.teacherGroupsTimer = new System.Windows.Forms.Timer(this.components);
             this.teacherGroupsThemesControl = new CourseProject.Forms.TeacherGroupsThemesControl();
+            this.teacherProjectsControl = new CourseProject.Forms.TeacherProjectsControl();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -84,12 +85,24 @@
             this.teacherGroupsThemesControl.Size = new System.Drawing.Size(1264, 657);
             this.teacherGroupsThemesControl.TabIndex = 3;
             // 
+            // teacherProjectsControl
+            // 
+            this.teacherProjectsControl.BackColor = System.Drawing.Color.GhostWhite;
+            this.teacherProjectsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.teacherProjectsControl.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.teacherProjectsControl.Location = new System.Drawing.Point(0, 24);
+            this.teacherProjectsControl.Margin = new System.Windows.Forms.Padding(5);
+            this.teacherProjectsControl.Name = "teacherProjectsControl";
+            this.teacherProjectsControl.Size = new System.Drawing.Size(1264, 657);
+            this.teacherProjectsControl.TabIndex = 4;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.GhostWhite;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.teacherProjectsControl);
             this.Controls.Add(this.teacherGroupsThemesControl);
             this.Controls.Add(this.teacherGroupsControl);
             this.Controls.Add(this.studentProjectControl);
@@ -114,6 +127,8 @@
         private Forms.TeacherGroupsControl teacherGroupsControl;
         private System.Windows.Forms.Timer teacherGroupsTimer;
         private Forms.TeacherGroupsThemesControl teacherGroupsThemesControl;
+        private Forms.TeacherProjectsControl teachersProjectsControl;
+        private Forms.TeacherProjectsControl teacherProjectsControl;
     }
 }
 

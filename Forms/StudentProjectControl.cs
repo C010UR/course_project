@@ -28,6 +28,10 @@ namespace CourseProject.Forms
         public StudentProjectControl()
         {
             InitializeComponent();
+
+            stagesList.DrawMode = DrawMode.OwnerDrawVariable;
+            stagesList.MeasureItem += lst_MeasureItem;
+            stagesList.DrawItem += lst_DrawItem;
         }
 
         private void StudentProjectControl_Load(object sender, EventArgs e)
@@ -36,9 +40,6 @@ namespace CourseProject.Forms
 
         public void ItemsLoad()
         {
-            stagesList.DrawMode = DrawMode.OwnerDrawVariable;
-            stagesList.MeasureItem += lst_MeasureItem;
-            stagesList.DrawItem += lst_DrawItem;
 
             updateTimer.Start();
 
@@ -58,6 +59,16 @@ namespace CourseProject.Forms
             else
             {
                 themeNameLabel.Text = "Тема проета: " + lastTheme[0].theme_name;
+
+                lastTheme[0].AddTeacherNames(
+                    DataBaseGet.Teachers("WHERE teacher_id = " + lastTheme[0].main_teacher_id)[0].teacher_name,
+                    DataBaseGet.Teachers("WHERE teacher_id = " + lastTheme[0].econ_teacher_id)[0].teacher_name,
+                    DataBaseGet.Teachers("WHERE teacher_id = " + lastTheme[0].safe_teacher_id)[0].teacher_name
+                );
+
+                mainTeacherName.Text = "Руководитель по основному разделу: " + lastTheme[0].main_teacher_name;
+                econTeacherName.Text = "Руководитель по экономическому разделу: " + lastTheme[0].econ_teacher_name;
+                safeTeacherName.Text = "Руководитель по разделу охраны труда: " + lastTheme[0].safe_teacher_name;
 
                 list = DataBaseGet.Stages("WHERE theme_id = " + lastTheme[0].theme_id);
                 stagesList.Items.Clear();
