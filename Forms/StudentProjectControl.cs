@@ -40,9 +40,6 @@ namespace CourseProject.Forms
 
         public void ItemsLoad()
         {
-
-            updateTimer.Start();
-
             lastTheme = DataBaseGet.Themes("WHERE student_id = " + Settings.user.id + " ORDER BY theme_id DESC LIMIT 1");
 
             if (lastTheme.Count == 0)
@@ -51,14 +48,11 @@ namespace CourseProject.Forms
                 stagesList.Hide();
                 checkedLabel.Hide();
                 datesLabel.Hide();
-                percentageBar.Hide();
-                percentageBox.Hide();
                 percentageLabel.Hide();
-                currentProgressLabel.Hide();
             }
             else
             {
-                themeNameLabel.Text = "Тема проета: " + lastTheme[0].theme_name;
+                themeNameLabel.Text = "Тема дипломного проекта: " + lastTheme[0].theme_name;
 
                 lastTheme[0].AddTeacherNames(
                     DataBaseGet.Teachers("WHERE teacher_id = " + lastTheme[0].main_teacher_id)[0].teacher_name,
@@ -84,73 +78,21 @@ namespace CourseProject.Forms
 
         private void stagesList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int old_percentage = list[stagesList.SelectedIndex].percentage;
-
-            if (old_percentage > 100)
+            if (list[stagesList.SelectedIndex].percentage > 100)
             {
-                checkedLabel.Text = "Статус: Проверено";
-
-                percentageBar.Hide();
-                percentageBox.Hide();
+                checkedLabel.Text = "Статус (Выставляется преподавателем): Выполнен";
                 percentageLabel.Hide();
-                currentProgressLabel.Hide();
             }
             else
             {
-                checkedLabel.Text = "Статус: Не проверено";
-
-                percentageBar.Show();
-                percentageBox.Show();
+                checkedLabel.Text = "Статус (Выставляется преподавателем): Не выполнен";
                 percentageLabel.Show();
-                currentProgressLabel.Show();
-
-                percentageBox.Text = old_percentage.ToString();
-                percentageBar.Value = old_percentage;
+                percentageLabel.Text = "Выполнено: " + list[stagesList.SelectedIndex].percentage + "%";
             }
+            stageTeacherLabel.Text = "Проверяющий преподаватель: " + list[stagesList.SelectedIndex].teacher_name;
             datesLabel.Text =
                 "Дата начала этапа: " + list[stagesList.SelectedIndex].date_started.ToString("dd.MM.yyyy") +
                 " Дата окончания этапа: " + list[stagesList.SelectedIndex].date_ended.ToString("dd.MM.yyyy");
-        }
-
-        private void percentageBar_Scroll(object sender, EventArgs e)
-        {
-            percentageBox.Text = percentageBar.Value.ToString();
-        }
-
-        private void percentageBox_TextChanged(object sender, EventArgs e)
-        {
-            int val;
-            if (!int.TryParse(percentageBox.Text, out val) || val > 100 || val < 0)
-            {
-                percentageBox.Text = "";
-                percentageBar.Value = 0;
-            }
-            else
-            {
-                int new_percentage = Convert.ToInt32(percentageBox.Text);
-                int old_percentage = list[stagesList.SelectedIndex].percentage;
-
-                percentageBar.Value = new_percentage;
-                if (new_percentage != old_percentage) tick = 1;
-            }
-
-        }
-
-        private void updateTimer_Tick(object sender, EventArgs e)
-        {
-            if (tick >= 0) tick--;
-            if (tick == 0)
-                updatePercentage();
-        }
-
-        private void updatePercentage()
-        {
-            int current_stage_id = list[stagesList.SelectedIndex].stage_id;
-            if (list[stagesList.SelectedIndex].percentage != Convert.ToInt32(percentageBox.Text))
-            {
-                DataBaseUpdate.StagePercentageOnly(current_stage_id, Convert.ToInt32(percentageBox.Text));
-                list = DataBaseGet.Stages("WHERE theme_id = " + lastTheme[0].theme_id);
-            }
         }
     }
 }

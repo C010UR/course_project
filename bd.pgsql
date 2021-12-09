@@ -88,7 +88,7 @@ CREATE TABLE stages (
 	stage_id        integer GENERATED ALWAYS AS IDENTITY NOT NULL,
 	stage_name_id   integer NOT NULL,
 	theme_id        integer NOT NULL,
-	teacher_id      integer NOT NULL,
+	teacher_id      integer,
 	percentage      integer NOT NULL DEFAULT (0),
 	date_started    date NOT NULL DEFAULT(CURRENT_DATE),
 	date_ended      date
@@ -329,7 +329,7 @@ BEGIN
 		SELECT stage_names.stage_name_id
 		FROM stage_names
 	LOOP
-		EXECUTE add_stage(_stage_names.stage_name_id, new_theme_id, 1, 0, CURRENT_DATE, CURRENT_DATE);
+		EXECUTE add_stage(_stage_names.stage_name_id, new_theme_id, NULL, 0, CURRENT_DATE, CURRENT_DATE);
 	END LOOP;
 
 	RETURN new_theme_id;
@@ -638,11 +638,11 @@ BEGIN
 	RETURN QUERY
 	SELECT 
 		stages.stage_id, stages.stage_name_id, stage_names.stage_name,
-		stages.theme_id, stages.teacher_id, teachers.teacher_name, 
+		stages.theme_id, COALESCE(stages.teacher_id, 0), COALESCE(teachers.teacher_name, ''), 
 		stages.percentage, stages.date_started, stages.date_ended
 	FROM stages
 	JOIN stage_names USING (stage_name_id)
-	JOIN teachers USING (teacher_id)
+	LEFT JOIN teachers USING (teacher_id)
 	ORDER BY theme_id, stage_name_id;
 END;
 $$ LANGUAGE 'plpgsql';

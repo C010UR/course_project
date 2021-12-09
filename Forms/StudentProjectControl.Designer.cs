@@ -29,20 +29,15 @@ namespace CourseProject.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.stagesList = new System.Windows.Forms.ListBox();
             this.themeNameLabel = new System.Windows.Forms.Label();
             this.checkedLabel = new System.Windows.Forms.Label();
             this.datesLabel = new System.Windows.Forms.Label();
-            this.percentageBar = new System.Windows.Forms.TrackBar();
-            this.percentageBox = new System.Windows.Forms.TextBox();
-            this.percentageLabel = new System.Windows.Forms.Label();
-            this.updateTimer = new System.Windows.Forms.Timer(this.components);
-            this.currentProgressLabel = new System.Windows.Forms.Label();
             this.mainTeacherName = new System.Windows.Forms.Label();
             this.econTeacherName = new System.Windows.Forms.Label();
             this.safeTeacherName = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.percentageBar)).BeginInit();
+            this.percentageLabel = new System.Windows.Forms.Label();
+            this.stageTeacherLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // stagesList
@@ -54,7 +49,7 @@ namespace CourseProject.Forms
             this.stagesList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stagesList.FormattingEnabled = true;
             this.stagesList.ItemHeight = 22;
-            this.stagesList.Location = new System.Drawing.Point(30, 97);
+            this.stagesList.Location = new System.Drawing.Point(37, 132);
             this.stagesList.Margin = new System.Windows.Forms.Padding(5);
             this.stagesList.Name = "stagesList";
             this.stagesList.Size = new System.Drawing.Size(1220, 266);
@@ -68,9 +63,9 @@ namespace CourseProject.Forms
             this.themeNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
             this.themeNameLabel.Location = new System.Drawing.Point(30, 30);
             this.themeNameLabel.Name = "themeNameLabel";
-            this.themeNameLabel.Size = new System.Drawing.Size(213, 37);
+            this.themeNameLabel.Size = new System.Drawing.Size(398, 37);
             this.themeNameLabel.TabIndex = 0;
-            this.themeNameLabel.Text = "Тема проекта";
+            this.themeNameLabel.Text = "Тема дипломного проекта";
             // 
             // checkedLabel
             // 
@@ -78,11 +73,11 @@ namespace CourseProject.Forms
             this.checkedLabel.AutoSize = true;
             this.checkedLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.checkedLabel.Location = new System.Drawing.Point(30, 435);
+            this.checkedLabel.Location = new System.Drawing.Point(30, 428);
             this.checkedLabel.Name = "checkedLabel";
-            this.checkedLabel.Size = new System.Drawing.Size(332, 37);
+            this.checkedLabel.Size = new System.Drawing.Size(796, 37);
             this.checkedLabel.TabIndex = 0;
-            this.checkedLabel.Text = "Статус: Не проверено";
+            this.checkedLabel.Text = "Статус (Выставляется преподавателем): Не выполнен";
             // 
             // datesLabel
             // 
@@ -90,69 +85,18 @@ namespace CourseProject.Forms
             this.datesLabel.AutoSize = true;
             this.datesLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.datesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
-            this.datesLabel.Location = new System.Drawing.Point(33, 472);
+            this.datesLabel.Location = new System.Drawing.Point(33, 485);
             this.datesLabel.Name = "datesLabel";
             this.datesLabel.Size = new System.Drawing.Size(317, 20);
             this.datesLabel.TabIndex = 0;
             this.datesLabel.Text = "Дата начала этапа: Дата окончания этапа";
             // 
-            // percentageBar
-            // 
-            this.percentageBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.percentageBar.LargeChange = 10;
-            this.percentageBar.Location = new System.Drawing.Point(37, 545);
-            this.percentageBar.Maximum = 100;
-            this.percentageBar.Name = "percentageBar";
-            this.percentageBar.Size = new System.Drawing.Size(313, 45);
-            this.percentageBar.TabIndex = 2;
-            this.percentageBar.TickFrequency = 10;
-            this.percentageBar.Scroll += new System.EventHandler(this.percentageBar_Scroll);
-            // 
-            // percentageBox
-            // 
-            this.percentageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.percentageBox.Location = new System.Drawing.Point(356, 545);
-            this.percentageBox.Name = "percentageBox";
-            this.percentageBox.Size = new System.Drawing.Size(100, 27);
-            this.percentageBox.TabIndex = 3;
-            this.percentageBox.Text = "0";
-            this.percentageBox.TextChanged += new System.EventHandler(this.percentageBox_TextChanged);
-            // 
-            // percentageLabel
-            // 
-            this.percentageLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.percentageLabel.AutoSize = true;
-            this.percentageLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.percentageLabel.Location = new System.Drawing.Point(458, 547);
-            this.percentageLabel.Name = "percentageLabel";
-            this.percentageLabel.Size = new System.Drawing.Size(24, 22);
-            this.percentageLabel.TabIndex = 4;
-            this.percentageLabel.Text = "%";
-            // 
-            // updateTimer
-            // 
-            this.updateTimer.Interval = 1000;
-            this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
-            // 
-            // currentProgressLabel
-            // 
-            this.currentProgressLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.currentProgressLabel.AutoSize = true;
-            this.currentProgressLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.currentProgressLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
-            this.currentProgressLabel.Location = new System.Drawing.Point(33, 522);
-            this.currentProgressLabel.Name = "currentProgressLabel";
-            this.currentProgressLabel.Size = new System.Drawing.Size(151, 20);
-            this.currentProgressLabel.TabIndex = 0;
-            this.currentProgressLabel.Text = "Текущий прогресс";
-            // 
             // mainTeacherName
             // 
-            this.mainTeacherName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.mainTeacherName.AutoSize = true;
             this.mainTeacherName.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.mainTeacherName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
-            this.mainTeacherName.Location = new System.Drawing.Point(563, 432);
+            this.mainTeacherName.Location = new System.Drawing.Point(33, 67);
             this.mainTeacherName.Name = "mainTeacherName";
             this.mainTeacherName.Size = new System.Drawing.Size(295, 20);
             this.mainTeacherName.TabIndex = 0;
@@ -160,11 +104,10 @@ namespace CourseProject.Forms
             // 
             // econTeacherName
             // 
-            this.econTeacherName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.econTeacherName.AutoSize = true;
             this.econTeacherName.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.econTeacherName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
-            this.econTeacherName.Location = new System.Drawing.Point(563, 452);
+            this.econTeacherName.Location = new System.Drawing.Point(33, 87);
             this.econTeacherName.Name = "econTeacherName";
             this.econTeacherName.Size = new System.Drawing.Size(341, 20);
             this.econTeacherName.TabIndex = 0;
@@ -172,15 +115,38 @@ namespace CourseProject.Forms
             // 
             // safeTeacherName
             // 
-            this.safeTeacherName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.safeTeacherName.AutoSize = true;
             this.safeTeacherName.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.safeTeacherName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
-            this.safeTeacherName.Location = new System.Drawing.Point(563, 472);
+            this.safeTeacherName.Location = new System.Drawing.Point(33, 107);
             this.safeTeacherName.Name = "safeTeacherName";
             this.safeTeacherName.Size = new System.Drawing.Size(316, 20);
             this.safeTeacherName.TabIndex = 0;
             this.safeTeacherName.Text = "Руководитель по разделу охраны труда:";
+            // 
+            // percentageLabel
+            // 
+            this.percentageLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.percentageLabel.AutoSize = true;
+            this.percentageLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.percentageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.percentageLabel.Location = new System.Drawing.Point(30, 535);
+            this.percentageLabel.Name = "percentageLabel";
+            this.percentageLabel.Size = new System.Drawing.Size(239, 37);
+            this.percentageLabel.TabIndex = 7;
+            this.percentageLabel.Text = "Выполнено: 0%";
+            // 
+            // stageTeacherLabel
+            // 
+            this.stageTeacherLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.stageTeacherLabel.AutoSize = true;
+            this.stageTeacherLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.stageTeacherLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
+            this.stageTeacherLabel.Location = new System.Drawing.Point(33, 465);
+            this.stageTeacherLabel.Name = "stageTeacherLabel";
+            this.stageTeacherLabel.Size = new System.Drawing.Size(248, 20);
+            this.stageTeacherLabel.TabIndex = 0;
+            this.stageTeacherLabel.Text = "Проверяющий преподаватель: ";
             // 
             // StudentProjectControl
             // 
@@ -188,12 +154,10 @@ namespace CourseProject.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GhostWhite;
             this.Controls.Add(this.percentageLabel);
-            this.Controls.Add(this.percentageBox);
-            this.Controls.Add(this.percentageBar);
-            this.Controls.Add(this.currentProgressLabel);
             this.Controls.Add(this.safeTeacherName);
             this.Controls.Add(this.econTeacherName);
             this.Controls.Add(this.mainTeacherName);
+            this.Controls.Add(this.stageTeacherLabel);
             this.Controls.Add(this.datesLabel);
             this.Controls.Add(this.checkedLabel);
             this.Controls.Add(this.themeNameLabel);
@@ -203,7 +167,6 @@ namespace CourseProject.Forms
             this.Name = "StudentProjectControl";
             this.Size = new System.Drawing.Size(1280, 720);
             this.Load += new System.EventHandler(this.StudentProjectControl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.percentageBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,13 +178,10 @@ namespace CourseProject.Forms
         private System.Windows.Forms.Label themeNameLabel;
         private System.Windows.Forms.Label checkedLabel;
         private System.Windows.Forms.Label datesLabel;
-        private System.Windows.Forms.TrackBar percentageBar;
-        private System.Windows.Forms.TextBox percentageBox;
-        private System.Windows.Forms.Label percentageLabel;
-        private System.Windows.Forms.Timer updateTimer;
-        private System.Windows.Forms.Label currentProgressLabel;
         private System.Windows.Forms.Label mainTeacherName;
         private System.Windows.Forms.Label econTeacherName;
         private System.Windows.Forms.Label safeTeacherName;
+        private System.Windows.Forms.Label percentageLabel;
+        private System.Windows.Forms.Label stageTeacherLabel;
     }
 }
