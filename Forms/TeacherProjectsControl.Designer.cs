@@ -45,6 +45,7 @@
             this.percentageBar = new System.Windows.Forms.TrackBar();
             this.percentageLabel = new System.Windows.Forms.Label();
             this.stageTeacherLabel = new System.Windows.Forms.Label();
+            this.reportButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.percentageBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +60,6 @@
             this.datesLabel.Size = new System.Drawing.Size(317, 20);
             this.datesLabel.TabIndex = 5;
             this.datesLabel.Text = "Дата начала этапа: Дата окончания этапа";
-            this.datesLabel.Click += new System.EventHandler(this.datesLabel_Click);
             // 
             // checkedLabel
             // 
@@ -195,7 +195,6 @@
             this.percentLabel.Size = new System.Drawing.Size(24, 22);
             this.percentLabel.TabIndex = 22;
             this.percentLabel.Text = "%";
-            this.percentLabel.Click += new System.EventHandler(this.percentLabel_Click);
             // 
             // percentageBox
             // 
@@ -243,11 +242,29 @@
             this.stageTeacherLabel.TabIndex = 23;
             this.stageTeacherLabel.Text = "Проверяющий преподаватель: ";
             // 
+            // reportButton
+            // 
+            this.reportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.reportButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.reportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reportButton.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.reportButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.reportButton.Location = new System.Drawing.Point(1039, 94);
+            this.reportButton.Name = "reportButton";
+            this.reportButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.reportButton.Size = new System.Drawing.Size(216, 30);
+            this.reportButton.TabIndex = 24;
+            this.reportButton.Text = "Отчет";
+            this.reportButton.UseVisualStyleBackColor = true;
+            this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
+            // 
             // TeacherProjectsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GhostWhite;
+            this.Controls.Add(this.reportButton);
             this.Controls.Add(this.stageTeacherLabel);
             this.Controls.Add(this.percentLabel);
             this.Controls.Add(this.percentageBox);
@@ -290,5 +307,6 @@
         private System.Windows.Forms.TrackBar percentageBar;
         private System.Windows.Forms.Label percentageLabel;
         private System.Windows.Forms.Label stageTeacherLabel;
+        private System.Windows.Forms.Button reportButton;
     }
 }

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using Excel = Microsoft.Office.Interop.Excel;
 
 using CourseProject.Classes;
 
@@ -242,8 +239,7 @@ namespace CourseProject.Forms
 
         private void percentageBox_TextChanged(object sender, EventArgs e)
         {
-            int val;
-            if (!int.TryParse(percentageBox.Text, out val) || val > 100 || val < 0)
+            if (!int.TryParse(percentageBox.Text, out int val) || val > 100 || val < 0)
             {
                 percentageBox.Text = "";
                 percentageBar.Value = 0;
@@ -276,14 +272,85 @@ namespace CourseProject.Forms
             }
         }
 
-        private void percentLabel_Click(object sender, EventArgs e)
+        private void reportButton_Click(object sender, EventArgs e)
         {
+            if (studentsList.SelectedIndex > -1)
+            {
+                Excel.Application oXL;
+                Excel._Workbook oWB;
+                Excel._Worksheet oSheet;
 
-        }
+                try
+                {
+                    oXL = new Excel.Application();
+                    oXL.Visible = true;
 
-        private void datesLabel_Click(object sender, EventArgs e)
-        {
+                    oWB = oXL.Workbooks.Add();
+                    oSheet = oWB.ActiveSheet as Excel.Worksheet;
 
+                    oSheet.Cells[1, 1].Value2 = "Дата создания документа - " + DateTime.Now.ToString("dd.MM.yyyy") + "; Преподаватель, создавший документ - " + Settings.user.name;
+                    oSheet.Cells[2, 1].Value2 = themeNameLabel.Text;
+                    oSheet.Cells[3, 1].Value2 = mainTeacherName.Text;
+                    oSheet.Cells[4, 1].Value2 = econTeacherName.Text;
+                    oSheet.Cells[5, 1].Value2 = safeTeacherName.Text;
+
+                    oSheet.get_Range("A1", "F1").Merge();
+                    oSheet.get_Range("A2", "F2").Merge();
+                    oSheet.get_Range("A3", "F3").Merge();
+                    oSheet.get_Range("A4", "F4").Merge();
+                    oSheet.get_Range("A5", "F5").Merge();
+
+                    oSheet.Cells[6, 1] = "Этап проекта";
+                    oSheet.Cells[6, 2] = "Статус";
+                    oSheet.Cells[6, 3] = "Выполнено";
+                    oSheet.Cells[6, 4] = "Проверяющий преподаватель";
+                    oSheet.Cells[6, 5] = "Дата начала этапа";
+                    oSheet.Cells[6, 6] = "Дата окончания этапа";
+
+                    oSheet.get_Range("A1", "F5").Font.Color = Color.FromArgb(164, 165, 169);
+
+                    oSheet.get_Range("A2", "F2").Font.Bold = true;
+                    oSheet.get_Range("A2", "F2").Font.Size = 20;
+                    oSheet.get_Range("A2", "F2").Font.Color = Color.FromArgb(116, 86, 174);
+
+                    oSheet.get_Range("A1", "F1").Font.Italic = true;
+                    oSheet.get_Range("A6", "F6").Font.Bold = true;
+
+                    oSheet.get_Range("A1", "F6").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    oSheet.get_Range("A6", "F6").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                    oSheet.get_Range("A1", "A1").ColumnWidth = 48;
+                    oSheet.get_Range("B1", "B1").ColumnWidth = 13;
+                    oSheet.get_Range("C1", "C1").ColumnWidth = 12;
+                    oSheet.get_Range("D1", "D1").ColumnWidth = 32;
+                    oSheet.get_Range("E1", "E1").ColumnWidth = 20;
+                    oSheet.get_Range("F1", "F1").ColumnWidth = 20;
+
+
+                    string[,] list = new string[stages.Count, 6];
+
+                    for (int i = 0; i < stages.Count; i++)
+                    {
+                        list[i, 0] = stages[i].stage_name;
+                        list[i, 1] = stages[i].percentage > 100 ? "Выполнен" : "Не выполнен";
+                        list[i, 2] = stages[i].percentage > 100 ? "100 %" : stages[i].percentage.ToString() + " %";
+                        list[i, 3] = stages[i].teacher_name;
+                        list[i, 4] = stages[i].date_started.ToString(@"dd.MM.yyyy");
+                        list[i, 5] = stages[i].date_ended.ToString(@"dd.MM.yyyy");
+                    }
+
+                    int last_cell = 6 + list.GetLength(0);
+
+                    oSheet.get_Range("A7", "F" + last_cell).Value2 = list;
+
+                    oXL.Visible = true;
+                    oXL.UserControl = true;
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show("Невозможно создать отчет:\n" + exc.Message, "Ошибка");
+                }
+            }
         }
     }
 }

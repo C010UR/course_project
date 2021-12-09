@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Globalization;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using CourseProject.Classes;
@@ -248,8 +243,15 @@ namespace CourseProject.Forms
                         stageTeacherBox.SelectedIndex = i;
                 }
 
-                stageDateStartedPicker.Value = Convert.ToDateTime(stagesGrid.SelectedRows[0].Cells[4].Value);
-                stageDateEndedPicker.Value = Convert.ToDateTime(stagesGrid.SelectedRows[0].Cells[5].Value);
+                stageDateStartedPicker.Value = DateTime.ParseExact(
+                    stagesGrid.SelectedRows[0].Cells[4].Value.ToString(),
+                    "dd.MM.yyyy", CultureInfo.InvariantCulture
+                );
+
+                stageDateEndedPicker.Value = DateTime.ParseExact(
+                    stagesGrid.SelectedRows[0].Cells[5].Value.ToString(),
+                    "dd.MM.yyyy", CultureInfo.InvariantCulture
+                );
             }
         }
     }

@@ -127,7 +127,6 @@
         private Forms.TeacherGroupsControl teacherGroupsControl;
         private System.Windows.Forms.Timer teacherGroupsTimer;
         private Forms.TeacherGroupsThemesControl teacherGroupsThemesControl;
-        private Forms.TeacherProjectsControl teachersProjectsControl;
         private Forms.TeacherProjectsControl teacherProjectsControl;
     }
 }

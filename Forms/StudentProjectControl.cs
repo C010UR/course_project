@@ -11,7 +11,6 @@ namespace CourseProject.Forms
     {
         List<Theme> lastTheme = new List<Theme>();
         List<Stage> list = new List<Stage>();
-        int tick = -1;
 
        private void lst_MeasureItem(object sender, MeasureItemEventArgs e)
        {

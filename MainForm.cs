@@ -101,7 +101,7 @@ namespace CourseProject
                 // Add menu strip items
                 ToolStripMenuItem project = new ToolStripMenuItem("projects")
                 {
-                    Text = "Курсовые проекты",
+                    Text = "Дипломные проекты",
                     ShortcutKeys = Keys.Control | Keys.Q
                 };
                 project.Click += teacherProjectsToolStripMenuItem_Click;
@@ -132,7 +132,7 @@ namespace CourseProject
                 // Add menu strip items
                 ToolStripMenuItem project = new ToolStripMenuItem("projects")
                 {
-                    Text = "Курсовые проекты",
+                    Text = "Мой дипломный проект",
                     ShortcutKeys = Keys.Control | Keys.Q
                 };
                 project.Click += studentProjectsToolStripMenuItem_Click;
