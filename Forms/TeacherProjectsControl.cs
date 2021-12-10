@@ -290,34 +290,36 @@ namespace CourseProject.Forms
 
                     oSheet.Cells[1, 1].Value2 = "Дата создания документа - " + DateTime.Now.ToString("dd.MM.yyyy") + "; Преподаватель, создавший документ - " + Settings.user.name;
                     oSheet.Cells[2, 1].Value2 = themeNameLabel.Text;
-                    oSheet.Cells[3, 1].Value2 = mainTeacherName.Text;
-                    oSheet.Cells[4, 1].Value2 = econTeacherName.Text;
-                    oSheet.Cells[5, 1].Value2 = safeTeacherName.Text;
+                    oSheet.Cells[3, 1].Value2 = "Дипломник: " + studentsList.SelectedItem.ToString();
+                    oSheet.Cells[4, 1].Value2 = mainTeacherName.Text;
+                    oSheet.Cells[5, 1].Value2 = econTeacherName.Text;
+                    oSheet.Cells[6, 1].Value2 = safeTeacherName.Text;
 
                     oSheet.get_Range("A1", "F1").Merge();
                     oSheet.get_Range("A2", "F2").Merge();
                     oSheet.get_Range("A3", "F3").Merge();
                     oSheet.get_Range("A4", "F4").Merge();
                     oSheet.get_Range("A5", "F5").Merge();
+                    oSheet.get_Range("A6", "F6").Merge();
 
-                    oSheet.Cells[6, 1] = "Этап проекта";
-                    oSheet.Cells[6, 2] = "Статус";
-                    oSheet.Cells[6, 3] = "Выполнено";
-                    oSheet.Cells[6, 4] = "Проверяющий преподаватель";
-                    oSheet.Cells[6, 5] = "Дата начала этапа";
-                    oSheet.Cells[6, 6] = "Дата окончания этапа";
+                    oSheet.Cells[7, 1] = "Этап проекта";
+                    oSheet.Cells[7, 2] = "Статус";
+                    oSheet.Cells[7, 3] = "Выполнено";
+                    oSheet.Cells[7, 4] = "Проверяющий преподаватель";
+                    oSheet.Cells[7, 5] = "Дата начала этапа";
+                    oSheet.Cells[7, 6] = "Дата окончания этапа";
 
-                    oSheet.get_Range("A1", "F5").Font.Color = Color.FromArgb(164, 165, 169);
+                    oSheet.get_Range("A1", "F6").Font.Color = Color.FromArgb(164, 165, 169);
 
                     oSheet.get_Range("A2", "F2").Font.Bold = true;
                     oSheet.get_Range("A2", "F2").Font.Size = 20;
                     oSheet.get_Range("A2", "F2").Font.Color = Color.FromArgb(116, 86, 174);
 
                     oSheet.get_Range("A1", "F1").Font.Italic = true;
-                    oSheet.get_Range("A6", "F6").Font.Bold = true;
+                    oSheet.get_Range("A7", "F7").Font.Bold = true;
 
-                    oSheet.get_Range("A1", "F6").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
-                    oSheet.get_Range("A6", "F6").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    oSheet.get_Range("A1", "F7").VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    oSheet.get_Range("A7", "F7").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
                     oSheet.get_Range("A1", "A1").ColumnWidth = 48;
                     oSheet.get_Range("B1", "B1").ColumnWidth = 13;
@@ -339,9 +341,9 @@ namespace CourseProject.Forms
                         list[i, 5] = stages[i].date_ended.ToString(@"dd.MM.yyyy");
                     }
 
-                    int last_cell = 6 + list.GetLength(0);
+                    int last_cell = 7 + list.GetLength(0);
 
-                    oSheet.get_Range("A7", "F" + last_cell).Value2 = list;
+                    oSheet.get_Range("A8", "F" + last_cell).Value2 = list;
 
                     oXL.Visible = true;
                     oXL.UserControl = true;

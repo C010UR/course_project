@@ -372,7 +372,7 @@
             // 
             // stageDateStartedPicker
             // 
-            this.stageDateStartedPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.stageDateStartedPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.stageDateStartedPicker.CustomFormat = "dd.MM.yyyy";
             this.stageDateStartedPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.stageDateStartedPicker.Location = new System.Drawing.Point(609, 624);
@@ -383,7 +383,7 @@
             // 
             // stageDateEndedPicker
             // 
-            this.stageDateEndedPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.stageDateEndedPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.stageDateEndedPicker.CustomFormat = "dd.MM.yyyy";
             this.stageDateEndedPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.stageDateEndedPicker.Location = new System.Drawing.Point(810, 624);
@@ -395,7 +395,7 @@
             // 
             // stageDateStartedLabel
             // 
-            this.stageDateStartedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.stageDateStartedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.stageDateStartedLabel.AutoSize = true;
             this.stageDateStartedLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.stageDateStartedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
@@ -407,7 +407,7 @@
             // 
             // stageDateEndedLabel
             // 
-            this.stageDateEndedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.stageDateEndedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.stageDateEndedLabel.AutoSize = true;
             this.stageDateEndedLabel.Font = new System.Drawing.Font("Montserrat SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.stageDateEndedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
